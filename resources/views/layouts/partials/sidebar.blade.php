@@ -1,6 +1,6 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <a href="#" class="brand-link">
-        <span class="brand-text font-weight-light">CRM</span>
+        <span class="brand-text font-weight-light">SIED</span>
     </a>
 
     <div class="sidebar">
@@ -30,6 +30,25 @@
                         </p>
                     </a>
                 </li>
+
+
+                <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Configuración
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+            <li class="nav-item">
+                    <a href="{{ route('admin.generos.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-clipboard-list"></i>
+                        <p>
+                            Generos
+                        </p>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a href="{{ route('admin.projects.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-project-diagram"></i>
@@ -46,7 +65,10 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
+            </ul>
+          </li>
+          
+          <li class="nav-item">
                     <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
                         <p>
                             <i class="fas fa-fw fa-sign-out-alt nav-icon">
