@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateGeneroRequest extends FormRequest
+class UpdateTipoAyudaRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class UpdateGeneroRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -26,11 +26,12 @@ class UpdateGeneroRequest extends FormRequest
         return [
             'nombre' => [
                 'required',
-                'unique:generos,nombre,'.$this->genero->id,
-            ],
-            'descripcion' => [
-                'required',
-            ]
+                'unique:tipo_ayudas,nombre,'.$this->tipoAyuda->id,
+        ],
+        'descripcion' => [
+            'required',
+        ],
+        
         ];
     }
 }

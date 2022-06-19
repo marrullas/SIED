@@ -25,7 +25,8 @@ class StoreGeneroRequest extends FormRequest
     {
         return [
             'nombre' => [
-                'required'
+                'required',
+                'unique:generos,nombre',
             ],
             'descripcion' => [
                 'required',

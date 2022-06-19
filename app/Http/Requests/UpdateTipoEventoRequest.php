@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateGeneroRequest extends FormRequest
+class UpdateTipoEventoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,11 +26,12 @@ class UpdateGeneroRequest extends FormRequest
         return [
             'nombre' => [
                 'required',
-                'unique:generos,nombre,'.$this->genero->id,
+                'unique:tipo_eventos,nombre,'.$this->tipoEvento->id,
             ],
             'descripcion' => [
                 'required',
-            ]
+            ],
+        
         ];
     }
 }

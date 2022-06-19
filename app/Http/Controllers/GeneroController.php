@@ -87,9 +87,9 @@ class GeneroController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Genero $data)
+    public function destroy(Genero $genero)
     {
-        $data->delete();
+        $genero->delete();
 
         return back();
     }
