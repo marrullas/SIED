@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class EventoFoto extends Model
 {
     use HasFactory;
+
+    public $fillable = ['evento_id', 'url', 'descripcion'];
+
+
+    public function evento()
+    {
+        return $this->belongsTo(Evento::class);
+    }
 }

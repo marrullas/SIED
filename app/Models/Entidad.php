@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Entidad extends Model
 {
     use HasFactory;
+     public $table = 'entidades';
+
+    protected $fillable = [
+        'nombre',
+        'direccion',
+        'telefono',
+        'email',
+    ];
+
 }

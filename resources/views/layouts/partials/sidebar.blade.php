@@ -15,21 +15,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('admin.users.index') }}" class="nav-link">
+                    <a href="{{ route('admin.eventos.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
-                            Usuarios
+                            Eventos
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="{{ route('admin.clients.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-user-tie"></i>
-                        <p>
-                            Clientes
-                        </p>
-                    </a>
-                </li>
+
 
 
                 <li class="nav-item">
@@ -42,6 +35,15 @@
             </a>
             <ul class="nav nav-treeview">
             <li class="nav-item">
+                    <a href="{{ route('admin.users.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>
+                            Usuarios
+                        </p>
+                    </a>
+                </li>
+
+            <li class="nav-item">
                     <a href="{{ route('admin.generos.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-clipboard-list"></i>
                         <p>
@@ -49,22 +51,8 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="{{ route('admin.projects.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-project-diagram"></i>
-                        <p>
-                            Proyectos
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('admin.tasks.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-clipboard-list"></i>
-                        <p>
-                            Tareas
-                        </p>
-                    </a>
-                </li>
+
+
                 <li class="nav-item">
                     <a href="{{ route('admin.zonas.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-clipboard-list"></i>
@@ -94,6 +82,30 @@
                         <i class="nav-icon fas fa-clipboard-list"></i>
                         <p>
                             Tipo de Ayudas
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.clients.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-user-tie"></i>
+                        <p>
+                            Clientes
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.tasks.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-clipboard-list"></i>
+                        <p>
+                            Tareas
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.projects.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-project-diagram"></i>
+                        <p>
+                            Proyectos
                         </p>
                     </a>
                 </li>

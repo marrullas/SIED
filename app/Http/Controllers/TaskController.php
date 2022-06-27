@@ -20,6 +20,7 @@ class TaskController extends Controller
     {
         $tasks = Task::with(['client', 'user', 'project'])->get();
 
+        
         return view('admin.tasks.index', compact('tasks'));
     }
 

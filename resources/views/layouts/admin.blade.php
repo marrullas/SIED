@@ -43,6 +43,7 @@
     <script src="https://npmcdn.com/flatpickr/dist/l10n/es.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
+
     <form id="logoutform" action="{{ route('logout') }}" method="POST" style="display: none;">
         {{ csrf_field() }}
     </form>
@@ -52,7 +53,11 @@
                 "locale": "es",
                 dateFormat: "d/m/Y",
             });
-
+            flatpickr(".datetimepicker", {
+                "locale": "es",
+                enableTime: true,
+                dateFormat: "d/m/Y H:i",
+            })
             $.extend(true, $.fn.dataTable.defaults, {
                 "language": {
                     "url": "http://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
@@ -66,7 +71,11 @@
             });
 
             $('.select2').select2();
+
+
         })
+
+
     </script>
 
     @yield('scripts')

@@ -24,7 +24,7 @@ return new class extends Migration
             $table->foreignId('tipo_evento_id')->constrained();
             $table->unsignedBigInteger('estado_evento_id');
             $table->foreignId('zona_id')->constrained();
-            $table->string('direcion');
+            $table->string('direcion')->nullable();
             $table->smallInteger('numero_afectados')->nullable();
             //$table->foreignId('estado_id')->constrained();
             $table->foreignId('entidad_id')->constrained('entidades'); //entidad que atendio el evento
