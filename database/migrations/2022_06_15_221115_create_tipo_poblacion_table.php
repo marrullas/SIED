@@ -12,12 +12,12 @@ return new class extends Migration
      * @return void
      */
     public function up()
-    {   //TODO: revisar el manejo de las ayudas y los miembros de la familia
-        Schema::create('ayudas', function (Blueprint $table) {
+    {
+        Schema::create('tipo_poblaciones', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->text('descripcion')->nullable();
-            
+            $table->string('descripcion')->nullable();    
+            $table->timestamps();
         });
     }
 
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ayudas');
+        Schema::dropIfExists('tipo_poblacion');
     }
 };

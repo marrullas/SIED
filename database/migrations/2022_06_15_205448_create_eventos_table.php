@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('responsable_reporte');
             $table->timestamp('fecha_hora_verificacion')->nullable();
             $table->string('responsable_verificacion')->nullable();
+            //TODO: campo de descripcion de verificación
             $table->timestamp('fecha_hora_evento')->nullable();
             $table->string('descripcion');
             $table->foreignId('tipo_evento_id')->constrained();
@@ -28,6 +29,7 @@ return new class extends Migration
             $table->smallInteger('numero_afectados')->nullable();
             //$table->foreignId('estado_id')->constrained();
             $table->foreignId('entidad_id')->constrained('entidades'); //entidad que atendio el evento
+            $table->string('entidad_nombre')->nullable(); //nombre de la entidad que atendio el evento en caso de no tener entidad_id
             $table->timestamps();
 
             $table->foreign('estado_evento_id')->references('id')->on('estado_eventos');
@@ -42,5 +44,6 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('eventos');
+        Schema::dropIfExists('evento');
     }
 };

@@ -12,13 +12,15 @@ return new class extends Migration
      * @return void
      */
     public function up()
-    {   //TODO: revisar el manejo de las ayudas y los miembros de la familia
-        Schema::create('ayudas', function (Blueprint $table) {
+    {
+        Schema::create('tipo_documentos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->text('descripcion')->nullable();
-            
+            $table->string('descripcion')->nullable();
+            $table->timestamps();
         });
+
+        $sql="INSERT INTO proyectos ( 'Nombre', 'Imagen', 'Descripcion') VALUES ('Proyecto 1', 'imagen.jpg', 'es un proyecto de hace mucho tiempo')";
     }
 
     /**
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ayudas');
+        Schema::dropIfExists('tipo_documento');
     }
 };
