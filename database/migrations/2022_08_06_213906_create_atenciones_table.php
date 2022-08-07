@@ -13,15 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('parientes', function (Blueprint $table) {
+        Schema::create('atenciones', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('apellido');
-            $table->foreign('tipo_documento_id')->references('id')->on('tipo_documentos');
-            $table->string('documento');
-            $table->string('telefono')->nullable();
+            $table->string('cantidad');
+            $table->string('descripcion');
             $table->foreignId('familia_id')->constrained();
-            $table->foreign('tipo_poblacion_id')->references('id')->on('tipo_poblaciones');
+            $table->foreignId('evento_id')->constrained();
+            $table->timestamp('fecha_hora_atencion');
+            $table->string('responsable_atencion');
+            $table->string('foto1')->nullable();
+            $table->string('foto2')->nullable();
             $table->timestamps();
         });
     }
@@ -33,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('parientes');
+        Schema::dropIfExists('atenciones');
     }
 };

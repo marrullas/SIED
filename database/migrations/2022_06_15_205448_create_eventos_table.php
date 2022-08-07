@@ -20,6 +20,7 @@ return new class extends Migration
             $table->timestamp('fecha_hora_verificacion')->nullable();
             $table->string('responsable_verificacion')->nullable();
             //TODO: campo de descripcion de verificación
+            $table->string('descripcion_verificación')->nullable();
             $table->timestamp('fecha_hora_evento')->nullable();
             $table->string('descripcion');
             $table->foreignId('tipo_evento_id')->constrained();
@@ -27,7 +28,10 @@ return new class extends Migration
             $table->foreignId('zona_id')->constrained();
             $table->string('direcion')->nullable();
             $table->smallInteger('numero_afectados')->nullable();
-            //$table->foreignId('estado_id')->constrained();
+            $table->foreignId('estado_id')->constrained('estado_eventos');
+            $table->string('descripcion_cierre')->nullable(); //debe ser una descripcion de cierre de evento
+            $table->boolean('atendido')->default(false); //se debe marcar en true cuando el evento se atiended y se cierra el evento
+            $table->timestamp('fecha_hora_cierre')->nullable(); //fecha y hora de cierre del evento
             $table->foreignId('entidad_id')->constrained('entidades'); //entidad que atendio el evento
             $table->string('entidad_nombre')->nullable(); //nombre de la entidad que atendio el evento en caso de no tener entidad_id
             $table->timestamps();

@@ -37,7 +37,8 @@ class EventoController extends Controller
         //
         $tipoEventos = TipoEvento::all();
         $zonas = Zona::all();
-        $estadoEventos = EstadoEvento::all();
+        //$estadoEventos = EstadoEvento::all();
+        $estadoEventos = EstadoEvento::where('nombre', '=', 'Verificación')->get();
         $entidades = Entidad::all();
 
         return view('admin.eventos.create', compact('tipoEventos', 'zonas', 'estadoEventos', 'entidades'));
@@ -150,5 +151,16 @@ class EventoController extends Controller
         }else{
             return redirect()->back()->with('error', 'No se puedo agregar imagen');
         }
+    }
+
+    public function cerrar(Evento $evento)
+    {
+        return view('admin.eventos.cerrar', compact('evento'));
+    }
+
+    public function storecerrar(Request $request, Evento $evento)
+    {
+        $evento->update($request->validated());
+        return redirect()->route('admin.eventos.index')->with('success', 'Evento cerrado exitosamente');
     }
 }

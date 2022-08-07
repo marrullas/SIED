@@ -39,6 +39,11 @@ class Evento extends Model
         return $this->hasMany(EventoFoto::class);
     }
 
+    public function eventoFamilias()
+    {
+        return $this->hasMany(Familia::class);
+    }
+
     public function tipoEvento()
     {
         return $this->belongsTo(TipoEvento::class);
