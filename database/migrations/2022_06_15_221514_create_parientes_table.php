@@ -17,11 +17,13 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('apellido');
-            $table->foreign('tipo_documento_id')->references('id')->on('tipo_documentos');
+            $table->foreignId('tipo_documento_id')->constrained();
             $table->string('documento');
             $table->string('telefono')->nullable();
             $table->foreignId('familia_id')->constrained();
-            $table->foreign('tipo_poblacion_id')->references('id')->on('tipo_poblaciones');
+            $table->foreignId('tipo_poblacion_id')->constrained('tipo_poblaciones');
+            $table->foreignId('parentesco_id')->constrained();
+            $table->string('notas')->nullable();
             $table->timestamps();
         });
     }

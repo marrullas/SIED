@@ -17,10 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('descripcion')->nullable();
-            $table->timestamps();
         });
 
-        $sql="INSERT INTO proyectos ( 'Nombre', 'Imagen', 'Descripcion') VALUES ('Proyecto 1', 'imagen.jpg', 'es un proyecto de hace mucho tiempo')";
     }
 
     /**
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipo_documento');
+        Schema::dropIfExists('tipo_documentos');
     }
 };

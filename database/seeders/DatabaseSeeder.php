@@ -24,6 +24,8 @@ class DatabaseSeeder extends Seeder
             GeneroSeeder::class,
             TipoAyudaSeeder::class,
             TipoEventoSeeder::class,
+            TipoPoblacionSeeder::class,
+            ParentescoSeeder::class,
         ]);
     }
 }

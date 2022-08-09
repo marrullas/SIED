@@ -18,16 +18,17 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('apellido');
-            $table->foreign('tipo_documento_id')->references('id')->on('tipo_documentos');
+            $table->foreignId('tipo_documento_id')->constrained();
             $table->string('documento');
             $table->string('telefono');
             $table->string('direccion');
             $table->string('email');
-            $table->numeric('numero_miembros');
-            $table->numeric('mayores65');
-            $table->numeric('mayores18');
-            $table->numeric('menores18');
+            $table->smallInteger('numero_miembros');
+            $table->smallInteger('mayores65');
+            $table->smallInteger('mayores18');
+            $table->smallInteger('menores18');
             $table->foreignId('evento_id')->constrained();
+            $table->string('observaciones')->nullable();
             $table->timestamps();
         });
     }
