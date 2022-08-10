@@ -10,6 +10,7 @@ use App\Http\Controllers\EtniaController;
 use App\Http\Controllers\TipoEventoController;
 use App\Http\Controllers\TipoAyudaController;
 use App\Http\Controllers\EventoController;
+use App\Http\Controllers\FamiliaController;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -51,6 +52,13 @@ Route::group(['middleware' => ['auth', 'verified'], 'as' => 'admin.'], function 
     Route::resource('familias', FamiliaController::class);
     
     //Route::get('/eventos/{id}/fotos', ['as' => 'eventos.addfotos' , 'uses' => 'EventoController@addfotos']);
+    Route::controller(FamiliaController::class)->group(function () {
+
+        Route::get('/familias/evento/{evento}', 'index')->name('familias.index');
+        Route::get('/familias/evento/{evento}/create', 'create')->name('familias.create');
+        Route::post('/familias/{familia}/fotos/create', 'storefamilia')->name('familias.addfamilia.create');
+        //Route::post('/orders', 'store');
+    });
 
     Route::controller(EventoController::class)->group(function () {
         Route::get('/eventos/{evento}/fotos', 'addfotos')->name('eventos.addfotos');

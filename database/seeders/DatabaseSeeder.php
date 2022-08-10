@@ -26,6 +26,8 @@ class DatabaseSeeder extends Seeder
             TipoEventoSeeder::class,
             TipoPoblacionSeeder::class,
             ParentescoSeeder::class,
+            EstadoEventoSeeder::class,
+            TipoDocumentoSeeder::class,
         ]);
     }
 }

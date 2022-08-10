@@ -18,6 +18,12 @@ class Evento extends Model
         'fecha_hora_reporte' => 'datetime:d/m/Y H:i:s',
     ];
 
+    protected $attributes = [
+        'estado_evento_id' => 1,
+        'estado_id' => 1,
+        'atendido' => false,
+    ];
+
     //protected $dateFormat = 'Y-m-d H:i:s';
     protected $fillable = [
         'fecha_hora_reporte',
@@ -29,9 +35,11 @@ class Evento extends Model
         'tipo_evento_id',
         'estado_evento_id',
         'zona_id',
+        'estado_id',
         'direccion',
         'numero_afectados',
         'entidad_id',
+        'atendido',
     ];
 
     public function eventoFotos()

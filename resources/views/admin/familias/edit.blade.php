@@ -16,139 +16,183 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <form method="POST" action="{{route('admin.eventos.update', $evento->id)}}">
+                        <form method="POST" action="{{route('admin.familias.update', $familia->id)}}">
                             @csrf
                             @method('PUT')
                             <div class="form-group">
-                                <label for="description" class="required">Descripción</label>
-                                <textarea name="description" class="form-control">{{old('descripcion', $evento->descripcion)}}</textarea>
-                                @if ($errors->has('descripcion'))
+                                <input type="hidden" name="evento_id" value="{{$familia->evento_id}}">
+                                <label for="nombre" class="required">Nombre persona cabeza familia</label>
+                                <input type="text" name="nombre" id="nombre" class="form-control {{$errors->has('nombre') ? 'is-invalid' : ''}}" placeholder="Ingrese nombre" value="{{old('nombre', $familia->nombre)}}">
+                                @if ($errors->has('nombre'))
                                 <span class="text-danger">
-                                    <strong>{{ $errors->first('descripcion') }}</strong>
-                                </span>
-                                @endif
-                            </div>
-                            <div class="form-group">
-                                <label for="fecha_hora_reporte" class="required">Fecha Reporte</label>
-                                <input name="fecha_hora_reporte" type="text" class="form-control datetimepicker" value="{{old('fecha_hora_reporte', $evento->fecha_hora_reporte)}}">
-                            </div>
-                            <!-- fomurlario de edición -->
-                            <div class="form-group">
-                                <label for="responsable_reporte" class="required">¿Quien reporta?</label>
-                                <input type="text" name="responsable_reporte" id="responsable_reporte" class="form-control {{$errors->has('responsable_reporte') ? 'is-invalid' : ''}}" placeholder="Ingrese el responsable del reporte" value="{{old('responsable_reporte', $evento->responsable_reporte)}}">
-                                @if ($errors->has('responsable_reporte'))
-                                <span class="text-danger">
-                                    <strong>{{ $errors->first('responsable_reporte') }}</strong>
+                                    <strong>{{ $errors->first('nombre') }}</strong>
                                 </span>
                                 @endif
                             </div>
 
                             <div class="form-group">
-                                <label for="descripcion" class="required">Descripción</label>
-                                <textarea name="descripcion" class="form-control">{{old('descripcion', $evento->descripcion)}}</textarea>
-                                @if ($errors->has('descripcion'))
+                                <label for="apellido" class="required">Apellido</label>
+                                <input type="text" name="apellido" id="apellido" class="form-control {{$errors->has('apellido') ? 'is-invalid' : ''}}" placeholder="Ingrese el apellido" value="{{old('apellido', $familia->apellido)}}">
+                                @if ($errors->has('apellido'))
                                 <span class="text-danger">
-                                    <strong>{{ $errors->first('descripcion') }}</strong>
+                                    <strong>{{ $errors->first('apellido') }}</strong>
                                 </span>
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="fecha_hora_evento" class="required">Fecha y hora Evento</label>
-                                <input name="fecha_hora_evento" type="text" class="form-control datetimepicker" value="{{old('fecha_hora_evento', $evento->fecha_hora_evento)}}">
-                            </div>
-                            <div class="form-group">
-                                <label for="responsable_verificacion" class="required">Responsable verificación</label>
-                                <input type="text" name="responsable_verificacion" id="responsable_verificacion" class="form-control {{$errors->has('responsable_verificacion') ? 'is-invalid' : ''}}" placeholder="Ingrese el responsable de verificacion del evento" value="{{old('responsable_verificacion', $evento->responsable_verificacion)}}">
-                                @if ($errors->has('responsable_verificacion'))
+                                <label for="edad" class="required">Edad</label>
+                                <input type="text" name="edad" id="edad" class="form-control {{$errors->has('edad') ? 'is-invalid' : ''}}" placeholder="Ingrese la edad" value="{{old('edad', $familia->edad)}}">
+                                @if ($errors->has('edad'))
                                 <span class="text-danger">
-                                    <strong>{{ $errors->first('responsable_verificacion') }}</strong>
+                                    <strong>{{ $errors->first('edad') }}</strong>
                                 </span>
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="fecha_hora_verificacion" class="required">Fecha verificación</label>
-                                <input name="fecha_hora_verificacion" type="text" class="form-control datetimepicker" value="{{old('fecha_hora_verificacion', $evento->fecha_hora_verificacion)}}">
-                            </div>
-                            <div class="form-group">
-                                <label for="numero_afectados" class="required">Numero afectados</label>
-                                <input type="number" name="numero_afectados" id="numero_afectados" class="form-control {{$errors->has('numero_afectados') ? 'is-invalid' : ''}}" placeholder="Ingrese el numero_afectados del evento" value="{{old('numero_afectados', $evento->numero_afectados)}}">
-                                @if ($errors->has('numero_afectados'))
-                                <span class="text-danger">
-                                    <strong>{{ $errors->first('numero_afectados') }}</strong>
-                                </span>
-                                @endif
-                            </div>
-                            <div class="form-group">
-                                <label for="tipoEvento_id" class="required">Tipo Evento</label>
-                                <select class="form-control select2" name="tipo_evento_id" style="width: 100%;">
-                                    <option value="">Seleccione un tipo de evento</option>
-                                    @foreach ($tipoEventos as $tipoEvento)
-                                    <option value="{{ $tipoEvento->id }}" {{(old('tipo_evento_id') ? old('tipo_evento_id') : $evento->tipoEvento->id ?? '' ) == $tipoEvento->id ? 'selected' : ''}}>{{ $tipoEvento->nombre }}
+                                <label for="tipo_documento_id" class="required">Tipo documento</label>
+                                <select class="form-control select2" name="tipo_documento_id" style="width: 100%;">
+                                    <option value="">Seleccione tipo de documento</option>
+                                    @foreach ($tipoDocumentos as $tipoDocumento)
+                                    <option value="{{$tipoDocumento->id}}" {{old('tipo_documento_id', $familia->tipo_documento_id) == $tipoDocumento->id ? 'selected' : ''}}>
                                     
-                                        {{ $tipoEvento->nombre }}
+                                        {{ $tipoDocumento->nombre }}
                                     </option>
                                     @endforeach
                                 </select>
-                                @if ($errors->has('tipo_evento_id'))
+                                @if ($errors->has('tipo_documento_id'))
                                 <span class="text-danger">
-                                    <strong>{{ $errors->first('tipo_evento_id') }}</strong>
+                                    <strong>{{ $errors->first('tipo_documento_id') }}</strong>
                                 </span>
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="zona_id" class="required">Zona</label>
-                                <select class="form-control select2" name="zona_id" style="width: 100%;">
-                                    <option value="">Seleccione un zona</option>
-                                    @foreach ($zonas as $zona)
-                                    <option value="{{ $zona->id }}" {{(old('zona_id') ? old('zona_id') : $evento->zona->id ?? '' ) == $zona->id ? 'selected' : ''}}>{{ $zona->nombre }}
-                                        {{ $zona->nombre }}
+                                <label for="documento" class="required">Número de documento</label>
+                                <input type="text" name="documento" id="documento" class="form-control {{$errors->has('documento') ? 'is-invalid' : ''}}" placeholder="Ingrese el número de documento" value="{{old('documento', $familia->documento)}}">
+                                @if ($errors->has('documento'))
+                                <span class="text-danger">
+                                    <strong>{{ $errors->first('documento') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+
+                            <div class="form-group">
+                                <label for="genero_id" class="required">Género</label>
+                                <select class="form-control select2" name="genero_id" style="width: 100%;">
+                                    <option value="">Seleccione género</option>
+                                    @foreach ($generos as $genero)
+                                    <option value="{{$genero->id}}" {{old('genero_id', $familia->genero_id) == $genero->id ? 'selected' : ''}}>
+                                    
+                                        {{ $genero->nombre }}
+
                                     </option>
                                     @endforeach
                                 </select>
-                                @if ($errors->has('zona_id'))
+                                @if ($errors->has('genero_id'))
                                 <span class="text-danger">
-                                    <strong>{{ $errors->first('zona_id') }}</strong>
+                                    <strong>{{ $errors->first('genero_id') }}</strong>
+                                </span>
+                                @endif                                
+                            </div>
+                            <div class="form-group">
+                                <label for="tipo_poblamiento_id" class="required">Tipo de población</label>
+                                <select class="form-control select2" name="tipo_poblacion_id" style="width: 100%;">
+                                    <option value="">Seleccione tipo de población</option>
+                                    @foreach ($tipoPoblaciones as $tipoPoblacion)
+                                    <option value="{{$tipoPoblacion->id}}" {{old('tipo_poblacion_id', $familia->tipo_poblacion_id) == $tipoPoblacion->id ? 'selected' : ''}}>{{$tipoPoblacion->nombre}}
+                                    
+                                        {{ $tipoPoblacion->nombre }}: {{ $tipoPoblacion->descripcion }}
+                                    </option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('tipo_poblacion_id'))
+                                <span class="text-danger">
+                                    <strong>{{ $errors->first('tipo_poblacion_id') }}</strong>
                                 </span>
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="estadoEvento_id" class="required">Estado</label>
-                                <select class="form-control select2" name="estado_evento_id" style="width: 100%;">
-                                    <option value="">Seleccione un estado para el evento</option>
-                                    @foreach ($estadoEventos as $estadoEvento)
-                                    <option value="{{ $estadoEvento->id }}" {{(old('estado_evento_id') ? old('estado_evento_id') : $evento->estadoevento->id ?? '' ) == $estadoEvento->id ? 'selected' : ''}}>{{ $estadoEvento->nombre }}
-                                        {{ $estadoEvento->nombre }}
-                                    </option>
-                                    @endforeach
-                                </select>
-                                @if ($errors->has('estado_evento_id'))
+                                <label for="telefono" class="required">Teléfono</label>
+                                <input type="text" name="telefono" id="telefono" class="form-control {{$errors->has('telefono') ? 'is-invalid' : ''}}" placeholder="Ingrese el teléfono" value="{{old('telefono', $familia->telefono)}}">
+                                @if ($errors->has('telefono'))
                                 <span class="text-danger">
-                                    <strong>{{ $errors->first('estado_evento_id') }}</strong>
+                                    <strong>{{ $errors->first('telefono') }}</strong>
                                 </span>
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="estadoEvento_id" class="required">Entidad que atiende evento</label>
-                                <select class="form-control select2" name="entidad_id" style="width: 100%;">
-                                    <option value="">Seleccione la entidad que atiende el evento</option>
-                                    @foreach ($entidades as $entidad)
-                                    <option value="{{ $entidad->id }}" {{(old('entidad_id') ? old('entidad_id') : $evento->entidad->id ?? '' ) == $entidad->id ? 'selected' : ''}}>{{ $entidad->nombre }}
-                                        {{ $entidad->nombre }}
-                                    </option>
-                                    @endforeach
-                                </select>
-                                @if ($errors->has('entidad_id'))
+                                <label for="telefono" class="required">Dirección</label>
+                                <input type="text" name="direccion" id="direccion" class="form-control {{$errors->has('direccion') ? 'is-invalid' : ''}}" placeholder="Ingrese el teléfono" value="{{old('direccion', $familia->direccion)}}">
+                                @if ($errors->has('direccion'))
                                 <span class="text-danger">
-                                    <strong>{{ $errors->first('entidad_id') }}</strong>
+                                    <strong>{{ $errors->first('direccion') }}</strong>
                                 </span>
                                 @endif
                             </div>
+                            <div class="form-group">
+                                <label for="telefono" class="required">Email</label>
+                                <input type="text" name="email" id="email" class="form-control {{$errors->has('email') ? 'is-invalid' : ''}}" placeholder="Ingrese el teléfono" value="{{old('email', $familia->email)}}">
+                                @if ($errors->has('email'))
+                                <span class="text-danger">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <label for="numero_miembros" class="required">Número de miembros</label>
+                                <input type="text" name="numero_miembros" id="numero_miembros" class="form-control {{$errors->has('numero_miembros') ? 'is-invalid' : ''}}" placeholder="Ingrese el número de miembros" value="{{old('numero_miembros', $familia->numero_miembros)}}">
+                                @if ($errors->has('numero_miembros'))
+                                <span class="text-danger">
+                                    <strong>{{ $errors->first('numero_miembros') }}</strong>
+                                </span>
+                                @endif                                
+                            </div>
+                            <div class="form-group">
+                                <label for="mayores65" class="required">Mayores de 65</label>
+                                <input type="text" name="mayores65" id="mayores65" class="form-control {{$errors->has('mayores65') ? 'is-invalid' : ''}}" placeholder="Ingrese el número de mayores de 65" value="{{old('mayores65', $familia->mayores65)}}">
+                                @if ($errors->has('mayores65'))
+                                <span class="text-danger">
+                                    <strong>{{ $errors->first('mayores65') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+
+                            <div class="form-group">
+                                <label for="numero_miembros" class="required">Mayores de 18</label>
+                                <input type="text" name="mayores18" id="mayores18" class="form-control {{$errors->has('mayores18') ? 'is-invalid' : ''}}" placeholder="Ingrese el número de mayores de 18" value="{{old('mayores18', $familia->mayores18)}}">
+                                @if ($errors->has('mayores18'))
+                                <span class="text-danger">
+                                    <strong>{{ $errors->first('mayores18') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+
+                            <div class="form-group">
+                                <label for="numero_miembros" class="required">Menores de 18</label>
+                                <input type="text" name="menores18" id="menores18" class="form-control {{$errors->has('menores18') ? 'is-invalid' : ''}}" placeholder="Ingrese el número de menores de 18" value="{{old('menores18', $familia->menores18)}}">
+                                @if ($errors->has('menores18'))
+                                <span class="text-danger">
+                                    <strong>{{ $errors->first('menores18') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="descripcion" class="required">Observaciones</label>
+                                <textarea name="observaciones" class="form-control">{{old('observaciones', $familia->observaciones)}}</textarea>
+                                @if ($errors->has('observaciones'))
+                                <span class="text-danger">
+                                    <strong>{{ $errors->first('observaciones') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+
                             
                             
 
                             <div class="row d-print-none mt-2">
                                 <div class="col-12 text-right">
-                                    <a class="btn btn-danger" href="{{route('admin.eventos.index')}}">
+                                    <a class="btn btn-danger" href="{{route('admin.familias.index',$familia->evento_id)}}">
                                         <i class="fa fa-fw fa-lg fa-arrow-left"></i>
                                         Regresar
                                     </a>

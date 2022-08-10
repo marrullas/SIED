@@ -124,7 +124,8 @@ class EventoController extends Controller
     }
 
     public function addFotos(Evento $evento)
-    {   $imagenes = EventoFoto::where('evento_id', $evento->id)->get();
+    {   
+        $imagenes = EventoFoto::where('evento_id', $evento->id)->get();
         return view('admin.eventos.addFoto', compact('evento', 'imagenes'));
     }
 
@@ -151,6 +152,12 @@ class EventoController extends Controller
         }else{
             return redirect()->back()->with('error', 'No se puedo agregar imagen');
         }
+    }
+
+    public function addFamilia(Evento $evento)
+    {
+        $familias = $evento->familias;
+        return view('admin.familias.index', compact('evento', 'familias'));
     }
 
     public function cerrar(Evento $evento)

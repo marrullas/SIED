@@ -19,10 +19,13 @@ return new class extends Migration
             $table->string('apellido');
             $table->foreignId('tipo_documento_id')->constrained();
             $table->string('documento');
+            $table->smallInteger('edad');
+            $table->foreignId('genero_id')->constrained();
             $table->string('telefono')->nullable();
             $table->foreignId('familia_id')->constrained();
             $table->foreignId('tipo_poblacion_id')->constrained('tipo_poblaciones');
             $table->foreignId('parentesco_id')->constrained();
+            $table->foreignId('evento_id')->constrained();
             $table->string('notas')->nullable();
             $table->timestamps();
         });

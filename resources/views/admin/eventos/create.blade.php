@@ -113,7 +113,7 @@
                                 <select class="form-control select2" name="estado_evento_id" style="width: 100%;">
                                     <!-- <option value="">Seleccione un estado para el evento</option> -->
                                     @foreach ($estadoEventos as $estadoEvento)
-                                    <option value="{{ $estadoEvento->id }}" {{old('estado_evento_id') == $estadoEvento->id ? 'selected' : ''}}>
+                                    <option value="{{ $estadoEvento->id }}" {{old('estado_evento_id') == $estadoEvento->id ? 'selected' : 'selected'}}>
                                         {{ $estadoEvento->nombre }}
                                     </option>
                                     @endforeach

@@ -68,7 +68,7 @@
                                         <a href="{{ route('admin.eventos.show',$evento->id) }}" class="btn btn-info" style="display: inline-block;">
                                         <i class='fa fa-info-circle' style='color: white'></i>
                                         </a>
-                                        <a href="{{ route('admin.eventos.show',$evento->id) }}" class="btn btn-warning" style="display: inline-block;">
+                                        <a href="{{ route('admin.familias.index',$evento) }}" class="btn btn-warning" style="display: inline-block;">
                                         <i class='fa fa-address-card' style='color: white'></i>
                                         </a>
                                         <a href="{{ route('admin.eventos.cerrar',$evento->id) }}" class="btn btn-danger" style="display: inline-block;">

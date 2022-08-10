@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Familia;
 use App\Http\Requests\StoreFamiliaRequest;
 use App\Http\Requests\UpdateFamiliaRequest;
+use App\Models\Evento;
+use App\Models\Genero;
+use App\Models\TipoDocumento;
+use App\Models\TipoPoblacion;
+
 
 class FamiliaController extends Controller
 {
@@ -13,8 +18,11 @@ class FamiliaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Evento $evento)
     {
+        $familias = $evento->familias;
+        return view('admin.familias.index', compact('evento', 'familias'));
+    
         //
     }
 
@@ -23,10 +31,14 @@ class FamiliaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Evento $evento)
     {
-        //
+        $tipoDocumentos = TipoDocumento::all();
+        $tipoPoblaciones = TipoPoblacion::all();
+        $generos = Genero::all();
+        return view('admin.familias.create',compact('evento', 'tipoDocumentos', 'tipoPoblaciones', 'generos'));
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -36,7 +48,10 @@ class FamiliaController extends Controller
      */
     public function store(StoreFamiliaRequest $request)
     {
-        //
+        $evento = Evento::find($request->evento_id);
+        Familia::create($request->validated());
+        //$evento->familias()->save($familia);
+        return redirect()->route('admin.familias.index', $evento)->with('status', 'Familia creada con éxito');
     }
 
     /**
@@ -58,7 +73,10 @@ class FamiliaController extends Controller
      */
     public function edit(Familia $familia)
     {
-        //
+        $tipoDocumentos = TipoDocumento::all();
+        $tipoPoblaciones = TipoPoblacion::all();
+        $generos = Genero::all();
+        return view('admin.familias.edit', compact('familia', 'tipoDocumentos', 'tipoPoblaciones', 'generos'));
     }
 
     /**
