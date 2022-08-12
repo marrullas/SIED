@@ -52,4 +52,9 @@ class Familia extends Model
     {
         return $this->belongsTo(Genero::class);
     }
+
+    public function atenciones()
+    {
+        return $this->hasMany(Atencion::class);
+    }
 }

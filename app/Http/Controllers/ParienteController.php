@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pariente;
 use App\Http\Requests\StoreParienteRequest;
 use App\Http\Requests\UpdateParienteRequest;
+use App\Models\Pariente;
+use App\Models\Familia;
+use App\Models\TipoDocumento;
+use App\Models\TipoPoblacion;
+use App\Models\Genero;
+use App\Models\Parentesco;
 
 class ParienteController extends Controller
 {
@@ -23,9 +28,14 @@ class ParienteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Familia $familia)
     {
-        //
+        $tipoDocumentos = TipoDocumento::all();
+        $tipoPoblaciones = TipoPoblacion::all();
+        $generos = Genero::all();
+        $parentescos = Parentesco::all();
+        return view('admin.parientes.create', compact('familia', 'tipoDocumentos', 'tipoPoblaciones', 'generos', 'parentescos'));
+            
     }
 
     /**
@@ -36,7 +46,10 @@ class ParienteController extends Controller
      */
     public function store(StoreParienteRequest $request)
     {
-        //
+        $familia = Familia::find($request->familia_id);
+        $familia->parientes()->create($request->validated());
+        //return redirect()->route('familias.show', $familia->id);
+        return redirect()->route('admin.familias.index', $familia->evento_id)->with('success', 'Pariente agregado con éxito');
     }
 
     /**
@@ -58,7 +71,11 @@ class ParienteController extends Controller
      */
     public function edit(Pariente $pariente)
     {
-        //
+        $tipoDocumentos = TipoDocumento::all();
+        $tipoPoblaciones = TipoPoblacion::all();
+        $generos = Genero::all();
+        $parentescos = Parentesco::all();
+        return view('admin.parientes.edit', compact('pariente', 'tipoDocumentos', 'tipoPoblaciones', 'generos', 'parentescos'));
     }
 
     /**
@@ -70,7 +87,9 @@ class ParienteController extends Controller
      */
     public function update(UpdateParienteRequest $request, Pariente $pariente)
     {
-        //
+        //dd($request->all());
+        $pariente->update($request->validated());
+        return redirect()->route('admin.familias.show', $pariente->familia_id)->with('success', 'Pariente actualizado con éxito');
     }
 
     /**

@@ -64,38 +64,30 @@
                 <div class="card">
                     <div class="card-body">
 
-                    <h1 class="fw-light text-center text-lg-start mt-4 mb-0">imagenes evento</h1>
+                        <h1 class="fw-light text-center text-lg-start mt-4 mb-0">imagenes evento</h1>
 
-<hr class="mt-2 mb-5">
+                        <hr class="mt-2 mb-5">
 
-<div class="row text-center text-lg-start">
-
-
-    @if(count($evento->eventoFotos) > 0)
-
-    @foreach($evento->eventoFotos as $eventoFoto)
-    <div class="col-lg-3 col-md-4 col-6">
-        <a href="{{ url('images/eventos/'.$eventoFoto->url) }}" class="d-block mb-4 h-100">
-            <img class="img-fluid img-thumbnail" src="{{ url('images/eventos/'.$eventoFoto->url) }}" alt="{{$eventoFoto->descripcion}}">
-        </a>
-    </div>
-    @endforeach
-    @else
-    <div class="col-lg-3 col-md-4 col-6">
-        <a href="{{ url('images/eventos/no-image.png') }}" class="d-block mb-4 h-100">
-            <img class="img-fluid img-thumbnail" src="{{ url('images/eventos/no-image.png') }}" alt="No hay imagenes">
-        </a>
-    </div>
-    @endif
+                        <div class="row text-center text-lg-start">
 
 
+                            @if(count($evento->eventoFotos) > 0)
 
-
-
-</div>
-
-
-
+                            @foreach($evento->eventoFotos as $eventoFoto)
+                            <div class="col-lg-3 col-md-4 col-6">
+                                <a href="{{ url('images/eventos/'.$eventoFoto->url) }}" class="d-block mb-4 h-100">
+                                    <img class="img-fluid img-thumbnail" src="{{ url('images/eventos/'.$eventoFoto->url) }}" alt="{{$eventoFoto->descripcion}}">
+                                </a>
+                            </div>
+                            @endforeach
+                            @else
+                            <div class="col-lg-3 col-md-4 col-6">
+                                <a href="{{ url('images/eventos/no-image.png') }}" class="d-block mb-4 h-100">
+                                    <img class="img-fluid img-thumbnail" src="{{ url('images/eventos/no-image.png') }}" alt="No hay imagenes">
+                                </a>
+                            </div>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>

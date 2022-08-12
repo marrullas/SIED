@@ -3,7 +3,6 @@
 @section('content')
 <div class="content-header">
     <div class="container-fluid">
-
         <div class="row mb-2">
             <div class="col-sm-8">
                 <h1 class="m-0">Familia: {{$familia->nombre}} - {{$familia->apellido}} </h1>
@@ -14,14 +13,6 @@
 </div>
 <div class="content">
     <div class="container-fluid">
-    @if (session('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ session('success') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        @endif
     <a href="{{ route('admin.familias.index',$familia->evento) }}" class="btn btn-danger mb-3">Regresar</a>
 
         <div class="row">
@@ -70,63 +61,6 @@
                             </dd>
                             </dd>
                         </dl>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-body">
-
-                        <a href="{{ route('admin.parientes.create',$familia->id) }}" class="btn btn-primary mb-3">Nuevo pariente</a>
-
-                        <table class="table table-bordered" id="tasks_table">
-                            <thead>
-                                <tr>
-
-                                    <th>Nombre</th>
-                                    <th>Documento </th>
-                                    <th>Edad</th>
-                                    <th>Genero</th>
-                                    <th>Parentesco</th>
-                                    <th>Telefono</th>
-
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($familia->parientes as $pariente)
-                                <tr>
-
-                                    <td>{{$pariente->nombre}} {{$pariente->apellido}}</td>
-                                    <td>{{$pariente->documento}}</td>
-                                    <td>{{$pariente->edad}}</td>
-                                    <td>{{$pariente->genero->nombre}}</td>
-                                    <td>{{$pariente->parentesco->nombre}}</td>
-                                    <td>{{$pariente->telefono}}</td>
-                                    
-                                    <td>
-                                        <a href="{{ route('admin.parientes.edit', $pariente->id) }}" class="btn btn-success">
-                                            <i class='fa fa-edit' style='color: white'></i>
-                                        </a>
-                                        
-                                        <form action="{{ route('admin.parientes.destroy', $pariente->id) }}" id="delete_form" method="POST" onsubmit="return confirm('Esta seguro que desea eliminar el registro, junto con los parientes registrados?')" style="display: inline-block;">
-                                            <input type="hidden" name="_method" value="DELETE">
-                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                            <button type="submit" class="btn btn-danger" value="Eliminar"> <i class='fas fa-trash' style='color: white' value="Eliminar"></i></button>
-                                        </form>
-                                        
-                                        <a href="{{ route('admin.parientes.show',$pariente->id) }}" class="btn btn-info" style="display: inline-block;">
-                                        <i class='fa fa-info-circle' style='color: white'></i>
-                                        </a>
-
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
 
                     </div>
                 </div>

@@ -16,9 +16,10 @@ return new class extends Migration
         Schema::create('atenciones', function (Blueprint $table) {
             $table->id();
             $table->string('cantidad');
-            $table->string('descripcion');
+            $table->string('descripcion')->nullable();
             $table->foreignId('familia_id')->constrained();
             $table->foreignId('evento_id')->constrained();
+            $table->foreignId('tipo_ayuda_id')->constrained();
             $table->timestamp('fecha_hora_atencion');
             $table->string('responsable_atencion');
             $table->string('foto1')->nullable();

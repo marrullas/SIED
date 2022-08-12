@@ -13,7 +13,7 @@ class StoreParienteRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,19 @@ class StoreParienteRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nombre' => 'required|string|max:255',
+            'apellido' => 'required|string|max:255',
+            'tipo_documento_id' => 'required|integer',
+            'documento' => 'required|string|max:255',
+            'edad' => 'required|integer',
+            'telefono' => 'nullable|string|max:255',
+            'tipo_poblacion_id' => 'required|integer',
+            'genero_id' => 'required|integer',
+            'parentesco_id' => 'required|integer',
+            'evento_id' => 'required|integer',
+            'notas' => 'nullable|string|max:255',
+            'familia_id' => 'required|integer',
+        
         ];
     }
 }

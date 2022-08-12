@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AtencionController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TaskController;
@@ -11,7 +12,7 @@ use App\Http\Controllers\TipoEventoController;
 use App\Http\Controllers\TipoAyudaController;
 use App\Http\Controllers\EventoController;
 use App\Http\Controllers\FamiliaController;
-
+use App\Http\Controllers\ParienteController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -50,13 +51,25 @@ Route::group(['middleware' => ['auth', 'verified'], 'as' => 'admin.'], function 
     Route::resource('tipoAyudas', TipoAyudaController::class);
     Route::resource('eventos', EventoController::class);
     Route::resource('familias', FamiliaController::class);
+    Route::resource('atenciones', AtencionController::class);
+    Route::resource('parientes', ParienteController::class);
     
     //Route::get('/eventos/{id}/fotos', ['as' => 'eventos.addfotos' , 'uses' => 'EventoController@addfotos']);
+
+    
+
+    Route::controller(ParienteController::class)->group(function () {
+        Route::get('/parientes/{familia}/create', 'create')->name('parientes.create');
+    });
+    Route::controller(AtencionController::class)->group(function () {
+        Route::get('/atenciones/{familia}/create', 'create')->name('atenciones.create');
+    });
     Route::controller(FamiliaController::class)->group(function () {
 
         Route::get('/familias/evento/{evento}', 'index')->name('familias.index');
         Route::get('/familias/evento/{evento}/create', 'create')->name('familias.create');
-        Route::post('/familias/{familia}/fotos/create', 'storefamilia')->name('familias.addfamilia.create');
+        
+        //Route::post('/familias/{familia}', 'update')->name('familias.update');
         //Route::post('/orders', 'store');
     });
 

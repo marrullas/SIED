@@ -48,10 +48,10 @@ class FamiliaController extends Controller
      */
     public function store(StoreFamiliaRequest $request)
     {
+
         $evento = Evento::find($request->evento_id);
-        Familia::create($request->validated());
-        //$evento->familias()->save($familia);
-        return redirect()->route('admin.familias.index', $evento)->with('status', 'Familia creada con éxito');
+       Familia::create($request->validated());
+        return redirect()->route('admin.familias.index', $evento)->with('success', 'Familia creada con éxito');
     }
 
     /**
@@ -62,7 +62,7 @@ class FamiliaController extends Controller
      */
     public function show(Familia $familia)
     {
-        //
+        return view('admin.familias.show', compact('familia'));
     }
 
     /**
@@ -89,6 +89,8 @@ class FamiliaController extends Controller
     public function update(UpdateFamiliaRequest $request, Familia $familia)
     {
         //
+        $familia->update($request->validated());
+        return redirect()->route('admin.familias.index', $familia->evento)->with('success', 'Familia actualizada con éxito');
     }
 
     /**
@@ -100,5 +102,7 @@ class FamiliaController extends Controller
     public function destroy(Familia $familia)
     {
         //
+        $familia->delete();
+        return redirect()->route('admin.familias.index', $familia->evento)->with('success', 'Familia eliminada con éxito');
     }
 }

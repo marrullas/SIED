@@ -156,7 +156,7 @@
                             </div> -->
                             <div class="row d-print-none mt-2">
                                 <div class="col-12 text-right">
-                                    <a class="btn btn-danger" href="{{route('admin.tasks.index')}}">
+                                    <a class="btn btn-danger" href="{{route('admin.eventos.index')}}">
                                         <i class="fa fa-fw fa-lg fa-arrow-left"></i>
                                         Regresar
                                     </a>

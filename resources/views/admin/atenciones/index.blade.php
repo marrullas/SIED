@@ -36,7 +36,8 @@
                                     <th>Nombre</th>
                                     <th>Documento </th>
                                     <th>numero miembros</th>
-                                    <th>Atenciones</th>
+                                    <th>Mayores 65</th>
+                                    <th>Menores 18</th>
 
                                     <th>Acciones</th>
                                 </tr>
@@ -48,27 +49,25 @@
                                     <td>{{$familia->nombre}} {{$familia->apellido}}</td>
                                     <td>{{$familia->documento}}</td>
                                     <td>{{$familia->numero_miembros}}</td>
-                                    <td>{{$familia->atenciones->count()}}</td>
-                                    
+                                    <td>{{$familia->mayores65}}</td>
+                                    <td>{{$familia->menores18}}</td>
+
                                     <td>
                                         <a href="{{ route('admin.familias.edit', $familia->id) }}" class="btn btn-success">
                                             <i class='fa fa-edit' style='color: white'></i>
                                         </a>
-                                        @if($familia->atenciones->count() == 0)
-                                        <form action="{{ route('admin.familias.destroy', $familia->id) }}" id="delete_form" method="POST" onsubmit="return confirm('Esta seguro que desea eliminar el registro, junto con los parientes registrados?')" style="display: inline-block;">
+
+                                        <form action="{{ route('admin.familias.destroy', $familia->id) }}" id="delete_form" method="POST" onsubmit="return confirm('Esta seguro que desea eliminar el registro?')" style="display: inline-block;">
                                             <input type="hidden" name="_method" value="DELETE">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                             <button type="submit" class="btn btn-danger" value="Eliminar"> <i class='fas fa-trash' style='color: white' value="Eliminar"></i></button>
                                         </form>
-                                        @endif
-                                        <a href="{{ route('admin.familias.show',$familia->id) }}" class="btn btn-info" style="display: inline-block;">
+
+                                        <a href="{{ route('admin.familias.show',$evento->id) }}" class="btn btn-info" style="display: inline-block;">
                                         <i class='fa fa-info-circle' style='color: white'></i>
                                         </a>
-                                        <a href="{{ route('admin.atenciones.create',$familia->id) }}" class="btn btn-primary" style="display: inline-block;">
+                                        <a href="{{ route('admin.familias.show',$evento->id) }}" class="btn btn-primary" style="display: inline-block;">
                                         <i class='fa fa-heart' style='color: white'></i>
-                                        </a>
-                                        <a href="{{ route('admin.parientes.create',$familia->id) }}" class="btn btn-warning" style="display: inline-block;">
-                                        <i class='fa fa-address-card' style='color: white'></i>                                        
                                         </a>
 
                                     </td>
