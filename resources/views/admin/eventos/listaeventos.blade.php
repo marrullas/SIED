@@ -1,6 +1,4 @@
-@extends('layouts.admin')
 
-@section('content')
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -26,8 +24,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-
-                        <a href="{{ route('admin.eventos.create') }}" class="btn btn-primary mb-3">Nuevo Evento</a>
+                        
 
                         <table class="table table-bordered" id="tasks_table">
                             <thead>
@@ -90,11 +87,4 @@
         </div>
     </div>
 </div>
-@endsection
-@section('scripts')
-<script>
-    $(document).ready(function() {
-        $('#tasks_table').DataTable();
-    });
-</script>
-@endsection
+

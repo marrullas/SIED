@@ -27,7 +27,9 @@
 
                         <form method="POST" action="{{route('admin.eventos.cerrar.close', $evento->id)}}">
                             @csrf
-
+                            @method('PUT')
+                            <input type="hidden" name="evento_id" value="{{$evento->id}}">
+                            <input type="hidden" name="estado_evento_id" value="3">
 
                             <div class="form-group">
                                 <label for="fecha_hora_cierre" class="required">Fecha cierre</label>
@@ -44,7 +46,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="atendido" class="required">¿Evento atendido? </label>
-                                <input class="btn-check" type="checkbox" name="atendido" id="atendido">
+                                <input type="checkbox" name="atendido" {{  ($evento->atendido == 1 ? ' checked' : '') }}>
                             </div>
 
 

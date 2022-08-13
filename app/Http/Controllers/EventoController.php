@@ -8,6 +8,7 @@ use App\Models\Zona;
 use App\Models\EstadoEvento;
 use App\Models\Entidad;
 use App\Http\Requests\StoreEventoRequest;
+use App\Http\Requests\StoreEventoCierreRequest;
 use App\Http\Requests\UpdateEventoRequest;
 use App\Models\EventoFoto;
 use Illuminate\Http\Request;
@@ -76,6 +77,11 @@ class EventoController extends Controller
         $evento = Evento::with(['tipoEvento', 'zona', 'estadoEvento', 'entidad', 'eventoFotos'])->findOrFail($evento->id);
         //dd($evento);
         return view('admin.eventos.show', compact('evento'));
+    }
+
+    public function resumen(Evento $evento){
+        $evento = Evento::with(['tipoEvento', 'zona', 'estadoEvento', 'entidad', 'eventoFotos'])->findOrFail($evento->id);
+        return view('admin.eventos.resumen', compact('evento'));
     }
 
     /**
@@ -165,9 +171,14 @@ class EventoController extends Controller
         return view('admin.eventos.cerrar', compact('evento'));
     }
 
-    public function storecerrar(Request $request, Evento $evento)
+    public function storecerrar(StoreEventoCierreRequest $request, Evento $evento)
     {
+        //dd($request->validated());
         $evento->update($request->validated());
+        // $evento->estado_eventi_id = 2;
+        // $evento -> fecha_hora_cierre = $request->fecha_hora_cierre;
+        // $evento -> descripcion_cierre = $request->descripcion_cierre;
+        // $evento -> save();
         return redirect()->route('admin.eventos.index')->with('success', 'Evento cerrado exitosamente');
     }
 }

@@ -16,6 +16,7 @@ class Evento extends Model
         'fecha_hora_verificacion' => 'datetime:d/m/Y H:i:s',
         'fecha_hora_evento' => 'datetime:d/m/Y H:i:s',
         'fecha_hora_reporte' => 'datetime:d/m/Y H:i:s',
+        'fecha_hora_cierre' => 'datetime:d/m/Y H:i:s',
     ];
 
     protected $attributes = [
@@ -40,6 +41,8 @@ class Evento extends Model
         'numero_afectados',
         'entidad_id',
         'atendido',
+        'fecha_hora_cierre',
+        'descripcion_cierre',
     ];
 
     public function eventoFotos()
@@ -50,6 +53,11 @@ class Evento extends Model
     public function eventoFamilias()
     {
         return $this->hasMany(Familia::class);
+    }
+
+    public function eventoAtenciones()
+    {
+        return $this->hasMany(Atencion::class);
     }
 
     public function tipoEvento()
@@ -67,6 +75,34 @@ class Evento extends Model
     public function entidad()
     {
         return $this->belongsTo(Entidad::class);
+    }
+
+    public function getTaeAttribute()
+    {
+        $start = Carbon::parse( Carbon::createFromFormat('d/m/Y H:i',$this->fecha_hora_evento));
+        $end = Carbon::parse(Carbon::createFromFormat('d/m/Y H:i',$this->fecha_hora_verificacion));
+        $duration = $end->diffInHours($start);
+        //$duration = $start->diffInHours($end);
+
+        //dd($this->fecha_hora_evento, $this->fecha_hora_verificacion, $duration);
+        //return gmdate('H:i', $duration);
+        return $duration;
+      
+    }
+
+    public function getRangotaeAttribute()
+    {
+
+        $rango = 'Malo';
+        if($this->tae < 72){
+            $rango = 'Medio';
+        }
+        if($this->tae < 48){
+            $rango = 'Bueno';
+        }
+
+        return $rango;
+      
     }
 
 
@@ -130,5 +166,14 @@ class Evento extends Model
             get: fn ($value) => $value ? Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y H:i'): '',
             set: fn ($value) => $value ? Carbon::createFromFormat('d/m/Y H:i', $value)->format('Y-m-d H:i'): null,
         );
+    }
+
+    Protected function setFechaHoraCierreAttribute($value)
+    {
+        return Attribute::make(
+            get: fn ($value) => $value ? Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y H:i'): '',
+            set: fn ($value) => $value ? Carbon::createFromFormat('d/m/Y H:i', $value)->format('Y-m-d H:i'): null,
+        );
+    
     }
 }

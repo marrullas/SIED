@@ -4,7 +4,7 @@
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
-            <div class="col-sm-6">
+            <div class="col-sm-8">
                 <h1 class="m-0">Evento: {{$evento->tipoEvento->nombre}} - {{$evento->zona->nombre}} Afectados: {{$evento->numero_afectados}}</h1>
             </div>
         </div>
@@ -12,15 +12,13 @@
 </div>
 <div class="content">
     <div class="container-fluid">
-
-
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
 
                         <dl class="row">
-                            <dt class="col-sm-3">Fecha: </dt>
+                            <dt class="col-sm-3">Fecha reporte: </dt>
                             <dd class="col-sm-9">{{$evento->fecha_hora_reporte}}</dd>
 
                             <dt class="col-sm-3">Descripción: </dt>
@@ -32,11 +30,19 @@
 
                             <dt class="col-sm-3">Fecha hora del evento</dt>
                             <dd class="col-sm-9">{{$evento->fecha_hora_evento}}</dd>
+                            <dt class="col-sm-3">Fecha hora verificación del evento</dt>
+                            <dd class="col-sm-9">{{$evento->fecha_hora_verificacion}}</dd>
 
                             <dt class="col-sm-3 text-truncate">Responsable verificación</dt>
                             <dd class="col-sm-9"> {{$evento->responsable_verificacion}}</dd>
 
-                            <dt class="col-sm-3">Destalles</dt>
+                            <dt class="col-sm-3 text-truncate">TAE</dt>
+                            <dd class="col-sm-9"> {{$evento->tae}}</dd>
+
+                            <dt class="col-sm-3 text-truncate">Rango TAE</dt>
+                            <dd class="col-sm-9"> {{$evento->rangotae}}</dd>
+
+                            <dt class="col-sm-3">Detalles</dt>
                             <dd class="col-sm-9">
                                 <dl class="row">
                                     <dt class="col-sm-4">Zona</dt>
@@ -93,6 +99,8 @@
                 </div>
             </div>
         </div>
+        @include('admin.familias.listafamilia')
+        @include('admin.atenciones.listaatenciones')
     </div>
 </div>
 @endsection

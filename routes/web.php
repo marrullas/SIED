@@ -77,7 +77,8 @@ Route::group(['middleware' => ['auth', 'verified'], 'as' => 'admin.'], function 
         Route::get('/eventos/{evento}/fotos', 'addfotos')->name('eventos.addfotos');
         Route::post('/eventos/{evento}/fotos/create', 'storefoto')->name('eventos.addfotos.create');
         Route::get('/eventos/{evento}/cerrar', 'cerrar')->name('eventos.cerrar');
-        Route::post('/eventos/{evento}/cerrar/close', 'storecerrar')->name('eventos.cerrar.close');
+        Route::put('/eventos/{evento}/cerrar/close', 'storecerrar')->name('eventos.cerrar.close');
+        Route::get('eventos/resumen/{evento}', 'resumen')->name('eventos.resumen');
         //Route::post('/orders', 'store');
     });
 

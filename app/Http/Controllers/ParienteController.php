@@ -100,6 +100,7 @@ class ParienteController extends Controller
      */
     public function destroy(Pariente $pariente)
     {
-        //
+        $pariente->delete();
+        return redirect()->route('admin.familias.show', $pariente->familia_id)->with('success', 'Pariente eliminado con éxito');
     }
 }

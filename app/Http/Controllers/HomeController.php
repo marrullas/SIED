@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Evento;
 class HomeController extends Controller
 {
     /**
@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $eventos = Evento::with(['tipoEvento', 'zona', 'estadoEvento', 'entidad'])->get();
+        return view('home', compact('eventos'));
     }
 }
