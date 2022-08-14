@@ -17,8 +17,9 @@ class ZonaController extends Controller
     public function index()
     {
         $data = Zona::all();
+        $estratos = \App\Models\Estrato::all();
 
-        return view('admin.zonas.index', compact('data'));
+        return view('admin.zonas.index', compact('data', 'estratos'));
     }
 
     /**
@@ -28,7 +29,8 @@ class ZonaController extends Controller
      */
     public function create()
     {
-        return view('admin.zonas.create');
+        $estratos = \App\Models\Estrato::all();
+        return view('admin.zonas.create', compact('estratos'));
     }
 
     /**
@@ -74,7 +76,8 @@ class ZonaController extends Controller
      */
     public function edit(Zona $zona)
     {
-        return view('admin.zonas.edit', compact('zona'));
+        $estratos = \App\Models\Estrato::all();
+        return view('admin.zonas.edit', compact('zona', 'estratos'));
     }
 
     /**

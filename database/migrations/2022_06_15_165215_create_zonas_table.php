@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('descripcion')->nullable();
+            $table->foreignId('estrato_id')->nullable()->constrained();
             $table->boolean('rural')->default(false);
             $table->timestamps();
         });

@@ -13,6 +13,12 @@ class Zona extends Model
     protected $fillable = [
         'nombre',
         'descripcion',
+        'estrato_id',
         'rural'
     ];
+
+    public function estrato()
+    {
+        return $this->belongsTo(Estrato::class);
+    }
 }

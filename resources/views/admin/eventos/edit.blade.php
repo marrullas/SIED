@@ -70,32 +70,6 @@
                                 <input name="fecha_hora_verificacion" type="text" class="form-control datetimepicker" value="{{old('fecha_hora_verificacion', $evento->fecha_hora_verificacion)}}">
                             </div>
                             <div class="form-group">
-                                <label for="numero_afectados" class="required">Numero afectados</label>
-                                <input type="number" name="numero_afectados" id="numero_afectados" class="form-control {{$errors->has('numero_afectados') ? 'is-invalid' : ''}}" placeholder="Ingrese el numero_afectados del evento" value="{{old('numero_afectados', $evento->numero_afectados)}}">
-                                @if ($errors->has('numero_afectados'))
-                                <span class="text-danger">
-                                    <strong>{{ $errors->first('numero_afectados') }}</strong>
-                                </span>
-                                @endif
-                            </div>
-                            <div class="form-group">
-                                <label for="tipoEvento_id" class="required">Tipo Evento</label>
-                                <select class="form-control select2" name="tipo_evento_id" style="width: 100%;">
-                                    <option value="">Seleccione un tipo de evento</option>
-                                    @foreach ($tipoEventos as $tipoEvento)
-                                    <option value="{{ $tipoEvento->id }}" {{(old('tipo_evento_id') ? old('tipo_evento_id') : $evento->tipoEvento->id ?? '' ) == $tipoEvento->id ? 'selected' : ''}}>{{ $tipoEvento->nombre }}
-                                    
-                                        {{ $tipoEvento->nombre }}
-                                    </option>
-                                    @endforeach
-                                </select>
-                                @if ($errors->has('tipo_evento_id'))
-                                <span class="text-danger">
-                                    <strong>{{ $errors->first('tipo_evento_id') }}</strong>
-                                </span>
-                                @endif
-                            </div>
-                            <div class="form-group">
                                 <label for="zona_id" class="required">Zona</label>
                                 <select class="form-control select2" name="zona_id" style="width: 100%;">
                                     <option value="">Seleccione un zona</option>
@@ -112,11 +86,38 @@
                                 @endif
                             </div>
                             <div class="form-group">
+                                <label for="direccion" class="required">Dirección</label>
+                                <input type="text" name="direccion" id="direccion" class="form-control {{$errors->has('direccion') ? 'is-invalid' : ''}}" placeholder="Ingrese el direccion del evento" value="{{old('direccion', $evento->direccion)}}">
+                                @if ($errors->has('direccion'))
+                                <span class="text-danger">
+                                    <strong>{{ $errors->first('direccion') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <label for="tipoEvento_id" class="required">Tipo Evento</label>
+                                <select class="form-control select2" name="tipo_evento_id" style="width: 100%;">
+                                    <option value="">Seleccione un tipo de evento</option>
+                                    @foreach ($tipoEventos as $tipoEvento)
+                                    <option value="{{ $tipoEvento->id }}" {{(old('tipo_evento_id') ? old('tipo_evento_id') : $evento->tipoEvento->id ?? '' ) == $tipoEvento->id ? 'selected' : ''}}>
+                                    
+                                        {{ $tipoEvento->nombre }}
+                                    </option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('tipo_evento_id'))
+                                <span class="text-danger">
+                                    <strong>{{ $errors->first('tipo_evento_id') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+
+                            <div class="form-group">
                                 <label for="estadoEvento_id" class="required">Estado</label>
                                 <select class="form-control select2" name="estado_evento_id" style="width: 100%;">
                                     <option value="">Seleccione un estado para el evento</option>
                                     @foreach ($estadoEventos as $estadoEvento)
-                                    <option value="{{ $estadoEvento->id }}" {{(old('estado_evento_id') ? old('estado_evento_id') : $evento->estadoevento->id ?? '' ) == $estadoEvento->id ? 'selected' : ''}}>{{ $estadoEvento->nombre }}
+                                    <option value="{{ $estadoEvento->id }}" {{(old('estado_evento_id') ? old('estado_evento_id') : $evento->estadoevento->id ?? '' ) == $estadoEvento->id ? 'selected' : ''}}>
                                         {{ $estadoEvento->nombre }}
                                     </option>
                                     @endforeach
@@ -132,7 +133,7 @@
                                 <select class="form-control select2" name="entidad_id" style="width: 100%;">
                                     <option value="">Seleccione la entidad que atiende el evento</option>
                                     @foreach ($entidades as $entidad)
-                                    <option value="{{ $entidad->id }}" {{(old('entidad_id') ? old('entidad_id') : $evento->entidad->id ?? '' ) == $entidad->id ? 'selected' : ''}}>{{ $entidad->nombre }}
+                                    <option value="{{ $entidad->id }}" {{(old('entidad_id') ? old('entidad_id') : $evento->entidad->id ?? '' ) == $entidad->id ? 'selected' : ''}}>
                                         {{ $entidad->nombre }}
                                     </option>
                                     @endforeach

@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Listado de Familias evento: {{$evento->descripcion}}</h1>
+                <h1 class="m-0">Atenciones: </h1>
             </div>
         </div>
     </div>
@@ -30,7 +30,7 @@
                         <table class="table table-bordered" id="tasks_table">
                             <thead>
                                 <tr>
-
+                                    <th>#</th>
                                     <th>Tipo ayuda</th>
                                     <th>Cantidad </th>
                                     
@@ -43,7 +43,7 @@
                             <tbody>
                                 @foreach ($evento->eventoAtenciones as $atencion)
                                 <tr>
-
+                                    <td>{{$atencion->id}}</td>
                                     <td>{{$atencion->tipoAyuda->nombre}}</td>
                                     <td>{{$atencion->cantidad}}</td>                                   
                                     <td>{{$atencion->fecha_hora_atencion}}</td>
@@ -52,6 +52,9 @@
                                     <td>
                                         <a href="{{ route('admin.atenciones.show',$atencion->id) }}" class="btn btn-info" style="display: inline-block;">
                                         <i class='fa fa-info-circle' style='color: white'></i>
+                                        </a>
+                                        <a href="{{ route('admin.atenciones.edit', $atencion->id) }}" class="btn btn-success">
+                                            <i class='fa fa-edit' style='color: white'></i>
                                         </a>
                                     </td>
                                 </tr>

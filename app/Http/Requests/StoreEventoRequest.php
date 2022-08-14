@@ -28,12 +28,13 @@ class StoreEventoRequest extends FormRequest
             'fecha_hora_verificacion' => 'nullable|date_format:d/m/Y H:i',
             'fecha_hora_evento' => 'nullable|date_format:d/m/Y H:i',
             'responsable_reporte' => 'required',
+            'responsable_verificacion' => 'nullable',
             'descripcion' => 'required',
             'tipo_evento_id' => 'required',
             'estado_evento_id' => 'required',
             'zona_id' => 'required',
+            'direccion' => 'nullable|required',
             'entidad_id' => 'required',
-            'numero_afectados' => 'nullable|numeric',
         ];
     }
 }

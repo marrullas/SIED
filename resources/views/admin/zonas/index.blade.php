@@ -43,6 +43,7 @@
                                     <th>Nombre zona</th>
                                     <th>descripción</th>
                                     <th>rural</th>
+                                    <th>estrato</th>
 
                                     <th>Acciones</th>
                                 </tr>
@@ -53,6 +54,7 @@
                                     <td>{{$zona->nombre}}</td>
                                     <td>{{$zona->descripcion}}</td>
                                     <td> {{ ($zona->rural == 1 ? 'Si' : 'No') }}</td>
+                                    <td>{{$zona->estrato != null ? $zona->estrato->descripcion : 'No definido'}}</td>
                                     <td>
                                         <a href="{{ route('admin.zonas.edit', $zona->id) }}" class="btn btn-success">
                                             Editar

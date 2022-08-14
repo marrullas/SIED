@@ -19,13 +19,14 @@ class Atencion extends Model
     protected $table = 'atenciones';
 
     protected $fillable = [
-        'cantidad',
-        'descripcion',
-        'evento_id',
-        'familia_id',
         'tipo_ayuda_id',
+        'descripcion',
+        'familia_id',
+        'evento_id',
         'fecha_hora_atencion',
         'responsable_atencion',
+        'cantidad',
+        'entregado',
         'foto1',
         'foto2',
     ];

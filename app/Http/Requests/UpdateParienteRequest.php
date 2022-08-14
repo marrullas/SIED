@@ -29,13 +29,14 @@ class UpdateParienteRequest extends FormRequest
             'tipo_documento_id' => 'required|integer',
             'documento' => 'required|string|max:255',
             'edad' => 'required|integer',
-            'genero_id' => 'required|integer',
             'telefono' => 'nullable|string|max:255',
-            'familia_id' => 'required|integer',
             'tipo_poblacion_id' => 'required|integer',
+            'genero_id' => 'required|integer',
             'parentesco_id' => 'required|integer',
             'evento_id' => 'required|integer',
-            'notas' => 'nullable|string',
+            'notas' => 'nullable|string|max:255',
+            'familia_id' => 'required|integer',
+            'etnia_id' => 'required|integer',
         ];
     }
 }

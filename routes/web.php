@@ -63,6 +63,8 @@ Route::group(['middleware' => ['auth', 'verified'], 'as' => 'admin.'], function 
     });
     Route::controller(AtencionController::class)->group(function () {
         Route::get('/atenciones/{familia}/create', 'create')->name('atenciones.create');
+        Route::get('/atenciones/{atencion}/edit', 'edit')->name('atenciones.edit');
+        Route::put('/atenciones/{atencion}/update', 'update')->name('atenciones.update');
     });
     Route::controller(FamiliaController::class)->group(function () {
 

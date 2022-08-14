@@ -21,6 +21,7 @@ class Pariente extends Model
         'tipo_poblacion_id',
         'parentesco_id',
         'evento_id',
+        'etnia_id',
         'notas'
     ];
 

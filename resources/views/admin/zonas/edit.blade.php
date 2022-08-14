@@ -41,7 +41,20 @@
                                 <label for="descripcion" class="required">Rural </label>                                
                                 <input type="checkbox" name="rural" id="rural" {{  ($zona->rural == 1 ? ' checked' : '') }}>
                             </div>
-                                
+                            <div class="form-group">
+                                <label for="estrato_id" class="required">Estrato</label>
+                                <select name="estrato_id" id="estrato_id" class="form-control {{$errors->has('estrato_id') ? 'is-invalid' : ''}}">
+                                    <option value="">Seleccione un estrato</option>
+                                    @foreach ($estratos as $estrato)
+                                    <option value="{{$estrato->id}}" {{old('estrato_id', $zona->estrato_id) == $estrato->id ? 'selected' : ''}}>{{$estrato->descripcion}}</option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('estrato_id'))
+                                <span class="text-danger">
+                                    <strong>{{ $errors->first('estrato_id') }}</strong>
+                                </span>
+                                @endif
+                            </div>
                             <div class="row d-print-none mt-2">
                                 <div class="col-12 text-right">
                                     <a class="btn btn-danger" href="{{route('admin.zonas.index')}}">

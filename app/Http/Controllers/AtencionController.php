@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Atencion;
 use App\Http\Requests\StoreAtencionRequest;
 use App\Http\Requests\UpdateAtencionRequest;
 use App\Models\Familia;
 use App\Models\Genero;
 use App\Models\TipoAyuda;
+use App\Models\Atencion;
 
 class AtencionController extends Controller
 {
@@ -49,6 +49,8 @@ class AtencionController extends Controller
     public function store(StoreAtencionRequest $request)
     {
         //dd($request);
+        $filename='';
+        $filename2 ='';
         if ($request->hasFile('foto1')) {
             $file = $request->file('foto1');
             $filename = date('YmdHi') . $file->getClientOriginalName();
@@ -76,7 +78,7 @@ class AtencionController extends Controller
      */
     public function show(Atencion $atencion)
     {
-        //
+        dd($atencion);
     }
 
     /**
@@ -85,9 +87,14 @@ class AtencionController extends Controller
      * @param  \App\Models\Atencion  $atencion
      * @return \Illuminate\Http\Response
      */
-    public function edit(Atencion $atencion)
-    {
-        //
+    public function edit(Atencion $atencion, $id)
+    {   
+        $atencion = Atencion::find($id);
+        $generos = Genero::all();
+        $tiposayudas = TipoAyuda::all();
+        $familia = $atencion->familia;
+        
+        return view('admin.atenciones.edit', compact('atencion', 'generos', 'tiposayudas', 'familia'));
     }
 
     /**
@@ -99,7 +106,9 @@ class AtencionController extends Controller
      */
     public function update(UpdateAtencionRequest $request, Atencion $atencion)
     {
-        //
+        //dd($request);
+        $atencion->update($request->validated());
+        return redirect()->route('admin.familias.index', $atencion->familia->evento_id)->with('success', 'Atencion actualizada con éxito');
     }
 
     /**

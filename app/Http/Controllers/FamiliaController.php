@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Familia;
 use App\Http\Requests\StoreFamiliaRequest;
 use App\Http\Requests\UpdateFamiliaRequest;
+use App\Models\Familia;
 use App\Models\Evento;
 use App\Models\Genero;
 use App\Models\TipoDocumento;
 use App\Models\TipoPoblacion;
-
+use App\Models\Estrato;
+use App\Models\Etnia;
 
 class FamiliaController extends Controller
 {
@@ -36,7 +37,9 @@ class FamiliaController extends Controller
         $tipoDocumentos = TipoDocumento::all();
         $tipoPoblaciones = TipoPoblacion::all();
         $generos = Genero::all();
-        return view('admin.familias.create',compact('evento', 'tipoDocumentos', 'tipoPoblaciones', 'generos'));
+        $estratos = Estrato::all();
+        $etnias = Etnia::all();
+        return view('admin.familias.create',compact('evento', 'tipoDocumentos', 'tipoPoblaciones', 'generos', 'estratos','etnias'));
     }
 
 
@@ -48,6 +51,7 @@ class FamiliaController extends Controller
      */
     public function store(StoreFamiliaRequest $request)
     {
+        //dd($request->all());
 
         $evento = Evento::find($request->evento_id);
        Familia::create($request->validated());
@@ -62,7 +66,9 @@ class FamiliaController extends Controller
      */
     public function show(Familia $familia)
     {
-        return view('admin.familias.show', compact('familia'));
+        $evento = Evento::find($familia->evento_id);
+        $atenciones = $familia->atenciones;
+        return view('admin.familias.show', compact('familia', 'evento', 'atenciones'));
     }
 
     /**
@@ -76,7 +82,9 @@ class FamiliaController extends Controller
         $tipoDocumentos = TipoDocumento::all();
         $tipoPoblaciones = TipoPoblacion::all();
         $generos = Genero::all();
-        return view('admin.familias.edit', compact('familia', 'tipoDocumentos', 'tipoPoblaciones', 'generos'));
+        $estratos = Estrato::all();
+        $etnias = Etnia::all();
+        return view('admin.familias.edit', compact('familia', 'tipoDocumentos', 'tipoPoblaciones', 'generos', 'estratos','etnias'));
     }
 
     /**

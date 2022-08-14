@@ -52,18 +52,7 @@
                                     <dt class="col-sm-4">Numero de miembros</dt>
                                     <dd class="col-sm-8">{{$familia->numero_miembros}}</dd>
                                 </dl>
-                                <dl class="row">
-                                    <dt class="col-sm-4">Numero personas mayores de 65</dt>
-                                    <dd class="col-sm-8">{{$familia->mayores65}}</dd>
-                                </dl>
-                                <dl class="row">
-                                    <dt class="col-sm-4">Numero personas menores de 18</dt>
-                                    <dd class="col-sm-8">{{$familia->menores18}}</dd>
-                                </dl>
-                                <dl class="row">
-                                    <dt class="col-sm-4">Numero personas mayores 18</dt>
-                                    <dd class="col-sm-8">{{$familia->mayores18}}</dd>
-                                </dl>
+
                             <dt class="col-sm-3">Observaciones: </dt>
                             <dd class="col-sm-9">
                                 <p> {{$familia->observaciones}}</p>
@@ -132,7 +121,52 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
 
+                        
+
+                        <table class="table table-bordered" id="tasks_table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Tipo ayuda</th>
+                                    <th>Cantidad </th>
+                                    
+                                    <th>Fecha</th>
+                                    <th>Responsable</th>
+
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($atenciones as $atencion)
+                                <tr>
+                                    <td>{{$atencion->id}}</td>
+                                    <td>{{$atencion->tipoAyuda->nombre}}</td>
+                                    <td>{{$atencion->cantidad}}</td>                                   
+                                    <td>{{$atencion->fecha_hora_atencion}}</td>
+                                    <td>{{$atencion->responsable_atencion}}</td>
+
+                                    <td>
+                                        <a href="{{ route('admin.atenciones.show',$atencion->id) }}" class="btn btn-info" style="display: inline-block;">
+                                        <i class='fa fa-info-circle' style='color: white'></i>
+                                        </a>
+                                        <a href="{{ route('admin.atenciones.edit', $atencion->id) }}" class="btn btn-success">
+                                            <i class='fa fa-edit' style='color: white'></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">

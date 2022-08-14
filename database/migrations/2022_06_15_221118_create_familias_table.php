@@ -25,11 +25,14 @@ return new class extends Migration
             $table->string('telefono');
             $table->string('direccion');
             $table->string('email')->nullable();
-            $table->smallInteger('numero_miembros');
+            $table->string('ocupacion')->nullable();
+            $table->smallInteger('numero_miembros')->default(1);
             $table->smallInteger('mayores65')->default(0);
             $table->smallInteger('mayores18')->default(0);
             $table->smallInteger('menores18')->default(0);
             $table->foreignId('evento_id')->constrained();
+            $table->foreignId('etnia_id')->constrained();
+            $table->foreignId('estrato_id')->constrained();
             $table->foreignId('tipo_poblacion_id')->constrained('tipo_poblaciones');
             $table->string('observaciones')->nullable();
             $table->timestamps();

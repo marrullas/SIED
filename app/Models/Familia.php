@@ -19,12 +19,11 @@ class Familia extends Model
         'telefono',
         'direccion',
         'email',
-        'numero_miembros',
-        'mayores65',
-        'mayores18',
-        'menores18',
+        'etnia_id',
+        'ocupacion',
         'evento_id',
         'tipo_poblacion_id',
+        'estrato_id',
         'observaciones'
     ];
 
@@ -56,5 +55,15 @@ class Familia extends Model
     public function atenciones()
     {
         return $this->hasMany(Atencion::class);
+    }
+
+    public function estrato()  
+    {
+        return $this->belongsTo(Estrato::class);
+    }
+
+    public function etnia()
+    {
+        return $this->belongsTo(Etnia::class);
     }
 }

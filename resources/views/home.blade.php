@@ -22,11 +22,11 @@
                                 <tr>
 
                                     <th>Descripcion</th>
-                                    <th>Fecha </th>
                                     <th>Status</th>
-                                    <th>Tipo</th>
-                                    <th>Zona</th>
-                                    <th>Afectados</th>
+                                    <th>Familias </th>
+                                    <th>Personas</th>                                    
+                                    <th>Atenciones</th>
+                                    <th>TAE</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
@@ -34,12 +34,20 @@
                                 @foreach ($eventos as $evento)
                                 <tr>
 
-                                    <td>{{$evento->descripcion}}</td>
-                                    <td>{{$evento->fecha_hora_reporte}}</td>
+                                    <td><p>
+                                        {{$evento->descripcion}} <br>
+                                        Fecha: <small>{{$evento->fecha_hora_reporte}}</small> <br>
+                                        Zona: <small>{{$evento->zona->nombre}}</small> <br>
+                                        Direccion: <small>{{$evento->direccion}}</small> <br>
+                                        Tipo: <small>{{$evento->tipoEvento->nombre}}</small> <br>
+
+                                    </p></td>
                                     <td>{{$evento->estadoEvento->nombre}}</td>
-                                    <td>{{$evento->tipoEvento->nombre}}</td>
-                                    <td>{{$evento->zona->nombre}}</td>
-                                    <td>{{$evento->numero_afectados}}</td>
+                                    <td>{{$evento->numerofamilias}}</td>
+                                    <td>{{$evento->numeroafectados}}</td>
+                                    <td>{{$evento->numeroatenciones}}</td>
+                                    <td>{{$evento->tae}}</td>
+                                    
                                     <td>
 
                                         <a href="{{ route('admin.eventos.resumen',$evento->id) }}" class="btn btn-info" style="display: inline-block;">

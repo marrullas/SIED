@@ -17,6 +17,12 @@ class EstratoSeeder extends Seeder
     {
         DB::table('Estratos')->insert(
             [
+                'nombre' => '0',
+                'descripcion' => 'Estrato 0',
+            ],
+        );
+        DB::table('Estratos')->insert(
+            [
                 'nombre' => '1',
                 'descripcion' => 'Estrato 1',
             ],

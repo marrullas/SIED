@@ -38,6 +38,7 @@ class Evento extends Model
         'zona_id',
         'estado_id',
         'direccion',
+        //TODO: quitar numero afectados
         'numero_afectados',
         'entidad_id',
         'atendido',
@@ -53,6 +54,11 @@ class Evento extends Model
     public function eventoFamilias()
     {
         return $this->hasMany(Familia::class);
+    }
+
+    public function eventoParientes()
+    {
+        return $this->hasMany(Pariente::class);
     }
 
     public function eventoAtenciones()
@@ -77,15 +83,34 @@ class Evento extends Model
         return $this->belongsTo(Entidad::class);
     }
 
+    public function getNumeroFamiliasAttribute()
+    {
+        return $this->eventoFamilias()->count();
+    }
+    public function getNumeroAfectadosAttribute()
+    {
+        $numeroafectados =  $this->eventoFamilias()->count() + $this->eventoParientes()->count();
+
+        return $numeroafectados;
+    }
+    public function getNumeroAtencionesAttribute()
+    {
+        return $this->eventoAtenciones()->count();
+    }
+
     public function getTaeAttribute()
     {
-        $start = Carbon::parse( Carbon::createFromFormat('d/m/Y H:i',$this->fecha_hora_evento));
-        $end = Carbon::parse(Carbon::createFromFormat('d/m/Y H:i',$this->fecha_hora_verificacion));
-        $duration = $end->diffInHours($start);
-        //$duration = $start->diffInHours($end);
+        
+        if($this->fecha_hora_verificacion != null){
+            $start = Carbon::parse( Carbon::createFromFormat('d/m/Y H:i',$this->fecha_hora_reporte));
+            $end = Carbon::parse( Carbon::createFromFormat('d/m/Y H:i',$this->fecha_hora_verificacion));
+            $duration = $end->diffInHours($start);
+        }else{
+            $duration = 0;
+        }
+        
+        
 
-        //dd($this->fecha_hora_evento, $this->fecha_hora_verificacion, $duration);
-        //return gmdate('H:i', $duration);
         return $duration;
       
     }

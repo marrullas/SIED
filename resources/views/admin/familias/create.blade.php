@@ -4,7 +4,7 @@
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
-            <div class="col-sm-6">
+            <div class="col-sm-8">
                 <h1 class="m-0">Nueva familia para evento: {{$evento->descripcion}}</h1>
             </div>
         </div>
@@ -81,6 +81,15 @@
                                 </span>
                                 @endif
                             </div>
+                            <div class="form-group">
+                                <label for="ocupacion" class="required">Ocupación</label>
+                                <input type="text" name="ocupacion" id="ocupacion" class="form-control {{$errors->has('ocupacion') ? 'is-invalid' : ''}}" placeholder="Ingrese el número de ocupacion" value="{{old('ocupacion', '')}}">
+                                @if ($errors->has('ocupacion'))
+                                <span class="text-danger">
+                                    <strong>{{ $errors->first('ocupacion') }}</strong>
+                                </span>
+                                @endif
+                            </div>
 
                             <div class="form-group">
                                 <label for="genero_id" class="required">Género</label>
@@ -115,6 +124,39 @@
                                 @endif
                             </div>
                             <div class="form-group">
+                                <label for="etnia_id" class="required">Etnia</label>
+                                <select class="form-control select2" name="etnia_id" style="width: 100%;">
+                                    <option value="">Seleccione etnia</option>
+                                    @foreach ($etnias as $etnia)
+                                    <option value="{{ $etnia->id }}" {{old('etnia_id') == $etnia->id ? 'selected' : ''}}>
+                                        {{ $etnia->nombre }}
+                                    </option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('etnia_id'))
+                                <span class="text-danger">
+                                    <strong>{{ $errors->first('etnia_id') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+
+                            <div class="form-group">
+                                <label for="estrato_id" class="required">Estrato</label>
+                                <select class="form-control select2" name="estrato_id" style="width: 100%;">
+                                    <option value="">Seleccione estrato</option>
+                                    @foreach ($estratos as $estrato)
+                                    <option value="{{ $estrato->id }}" {{old('estrato_id') == $estrato->id ? 'selected' : ''}}>
+                                        {{ $estrato->nombre }}
+                                    </option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('estrato_id'))
+                                <span class="text-danger">
+                                    <strong>{{ $errors->first('estrato_id') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+                            <div class="form-group">
                                 <label for="telefono" class="required">Teléfono</label>
                                 <input type="text" name="telefono" id="telefono" class="form-control {{$errors->has('telefono') ? 'is-invalid' : ''}}" placeholder="Ingrese el teléfono" value="{{old('telefono', '')}}">
                                 @if ($errors->has('telefono'))
@@ -141,46 +183,6 @@
                                 </span>
                                 @endif
                             </div>
-                            <div class="form-group">
-                                <label for="numero_miembros" class="required">Número de miembros</label>
-                                <input type="text" name="numero_miembros" id="numero_miembros" class="form-control {{$errors->has('numero_miembros') ? 'is-invalid' : ''}}" placeholder="Ingrese el número de miembros" value="{{old('numero_miembros', '')}}">
-                                @if ($errors->has('numero_miembros'))
-                                <span class="text-danger">
-                                    <strong>{{ $errors->first('numero_miembros') }}</strong>
-                                </span>
-                                @endif                                
-                            </div>
-                            <div class="form-group">
-                                <label for="mayores65" class="required">Mayores de 65</label>
-                                <input type="text" name="mayores65" id="mayores65" class="form-control {{$errors->has('mayores65') ? 'is-invalid' : ''}}" placeholder="Ingrese el número de mayores de 65" value="{{old('mayores65', '')}}">
-                                @if ($errors->has('mayores65'))
-                                <span class="text-danger">
-                                    <strong>{{ $errors->first('mayores65') }}</strong>
-                                </span>
-                                @endif
-                            </div>
-
-                            <div class="form-group">
-                                <label for="numero_miembros" class="required">Mayores de 18</label>
-                                <input type="text" name="mayores18" id="mayores18" class="form-control {{$errors->has('mayores18') ? 'is-invalid' : ''}}" placeholder="Ingrese el número de mayores de 18" value="{{old('mayores18', '')}}">
-                                @if ($errors->has('mayores18'))
-                                <span class="text-danger">
-                                    <strong>{{ $errors->first('mayores18') }}</strong>
-                                </span>
-                                @endif
-                            </div>
-
-                            <div class="form-group">
-                                <label for="numero_miembros" class="required">Menores de 18</label>
-                                <input type="text" name="menores18" id="menores18" class="form-control {{$errors->has('menores18') ? 'is-invalid' : ''}}" placeholder="Ingrese el número de menores de 18" value="{{old('menores18', '')}}">
-                                @if ($errors->has('menores18'))
-                                <span class="text-danger">
-                                    <strong>{{ $errors->first('menores18') }}</strong>
-                                </span>
-                                @endif
-                            </div>
-
-
                             <div class="form-group">
                                 <label for="descripcion" class="required">Observaciones</label>
                                 <textarea name="observaciones" class="form-control">{{old('observaciones', '')}}</textarea>

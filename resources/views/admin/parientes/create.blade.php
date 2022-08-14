@@ -134,6 +134,23 @@
                                 @endif
                             </div>
                             <div class="form-group">
+                                <label for="etnia_id" class="required">Etnia</label>
+                                <select class="form-control select2" name="etnia_id" style="width: 100%;">
+                                    <option value="">Seleccione etnia</option>
+                                    @foreach ($etnias as $etnia)
+                                    <option value="{{$etnia->id}}" {{old('etnia_id', $familia->etnia_id) == $etnia->id ? 'selected' : ''}}>
+                                    
+                                        {{ $etnia->nombre }}
+                                    </option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('etnia_id'))
+                                <span class="text-danger">
+                                    <strong>{{ $errors->first('etnia_id') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+                            <div class="form-group">
                                 <label for="telefono" class="required">Teléfono</label>
                                 <input type="text" name="telefono" id="telefono" class="form-control {{$errors->has('telefono') ? 'is-invalid' : ''}}" placeholder="Ingrese el teléfono" value="{{old('telefono', '')}}">
                                 @if ($errors->has('telefono'))

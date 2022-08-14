@@ -10,6 +10,7 @@ use App\Models\TipoDocumento;
 use App\Models\TipoPoblacion;
 use App\Models\Genero;
 use App\Models\Parentesco;
+use App\Models\Etnia;
 
 class ParienteController extends Controller
 {
@@ -34,7 +35,8 @@ class ParienteController extends Controller
         $tipoPoblaciones = TipoPoblacion::all();
         $generos = Genero::all();
         $parentescos = Parentesco::all();
-        return view('admin.parientes.create', compact('familia', 'tipoDocumentos', 'tipoPoblaciones', 'generos', 'parentescos'));
+        $etnias = Etnia::all();
+        return view('admin.parientes.create', compact('familia', 'tipoDocumentos', 'tipoPoblaciones', 'generos', 'parentescos', 'etnias'));
             
     }
 
@@ -75,7 +77,9 @@ class ParienteController extends Controller
         $tipoPoblaciones = TipoPoblacion::all();
         $generos = Genero::all();
         $parentescos = Parentesco::all();
-        return view('admin.parientes.edit', compact('pariente', 'tipoDocumentos', 'tipoPoblaciones', 'generos', 'parentescos'));
+        $etnias = Etnia::all();
+
+        return view('admin.parientes.edit', compact('pariente', 'tipoDocumentos', 'tipoPoblaciones', 'generos', 'parentescos', 'etnias'));
     }
 
     /**

@@ -34,7 +34,10 @@ class UpdateZonaRequest extends FormRequest
             ],
             'rural' => [
                 'boolean',
-            ]
+            ],
+            'estrato_id' => [
+                'nullable','integer',
+            ],
         ];
     }
            /**

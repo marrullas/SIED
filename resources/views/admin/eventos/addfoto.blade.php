@@ -81,12 +81,12 @@
                     </div>
                 </div>
                 <div class="container">
-    <h3>View all image</h3><hr>
+    <h3>Ver imagenes del evento</h3><hr>
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">Image id</th>
-          <th scope="col">Image</th>
+          <th scope="col">Id</th>
+          <th scope="col">Imagen</th>
         </tr>
       </thead>
       <tbody>

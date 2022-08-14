@@ -19,14 +19,13 @@ return new class extends Migration
             $table->string('responsable_reporte');
             $table->timestamp('fecha_hora_verificacion')->nullable();
             $table->string('responsable_verificacion')->nullable();
-            //TODO: campo de descripcion de verificación
             $table->string('descripcion_verificación')->nullable();
             $table->timestamp('fecha_hora_evento')->nullable();
             $table->string('descripcion');
             $table->foreignId('tipo_evento_id')->constrained();
             $table->unsignedBigInteger('estado_evento_id');
             $table->foreignId('zona_id')->constrained();
-            $table->string('direcion')->nullable();
+            $table->string('direccion')->nullable();
             $table->smallInteger('numero_afectados')->nullable();
             $table->foreignId('estado_id')->constrained('estado_eventos');
             $table->string('descripcion_cierre')->nullable(); //debe ser una descripcion de cierre de evento

@@ -50,5 +50,11 @@ class TipoPoblacionSeeder extends Seeder
             'descripcion' => 'Diversidad sexual y de genero',
             ]
         );
+        DB::table('tipo_poblaciones')->insert(
+            [
+            'nombre' => 'Ninguna',
+            'descripcion' => 'No pertenece a ninguna población',
+            ]
+        );
     }
 }

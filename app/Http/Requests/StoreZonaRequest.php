@@ -30,11 +30,14 @@ class StoreZonaRequest extends FormRequest
                 'unique:zonas,nombre'
             ],
             'descripcion' => [
-                'required',
+                'nullable',
             ],
             'rural' => [
                 'boolean',
-            ]
+            ],
+            'estrato_id' => [
+                'nullable','integer',
+            ],
 
         ];
     }

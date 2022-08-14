@@ -36,6 +36,7 @@ class StoreParienteRequest extends FormRequest
             'evento_id' => 'required|integer',
             'notas' => 'nullable|string|max:255',
             'familia_id' => 'required|integer',
+            'etnia_id' => 'required|integer',
         
         ];
     }

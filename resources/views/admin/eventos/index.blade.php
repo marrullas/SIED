@@ -33,12 +33,13 @@
                             <thead>
                                 <tr>
 
+                                    <th>#</th>
                                     <th>Descripcion</th>
                                     <th>Fecha </th>
                                     <th>Status</th>
                                     <th>Tipo</th>
                                     <th>Zona</th>
-                                    <th>Afectados</th>
+                                    <th>Familias</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
@@ -46,12 +47,13 @@
                                 @foreach ($eventos as $evento)
                                 <tr>
 
+                                    <td>{{$evento->id}}</td>
                                     <td>{{$evento->descripcion}}</td>
                                     <td>{{$evento->fecha_hora_reporte}}</td>
                                     <td>{{$evento->estadoEvento->nombre}}</td>
                                     <td>{{$evento->tipoEvento->nombre}}</td>
                                     <td>{{$evento->zona->nombre}}</td>
-                                    <td>{{$evento->numero_afectados}}</td>
+                                    <td>{{$evento->numerofamilias}}</td>
                                     <td>
                                         <a href="{{ route('admin.eventos.edit', $evento->id) }}" class="btn btn-success">
                                             <i class='fa fa-edit' style='color: white'></i>

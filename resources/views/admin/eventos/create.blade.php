@@ -27,6 +27,7 @@
 
                         <form method="POST" action="{{route('admin.eventos.store')}}">
                             @csrf
+                            <input type="hidden" name="estado_evento_id" value="1">
                             <div class="form-group">
                                 <label for="responsable_reporte" class="required">¿Quien reporta?</label>
                                 <input type="text" name="responsable_reporte" id="responsable_reporte" class="form-control {{$errors->has('responsable_reporte') ? 'is-invalid' : ''}}" placeholder="Ingrese el responsable del reporte" value="{{old('responsable_reporte', '')}}">
@@ -68,11 +69,27 @@
                                 <input name="fecha_hora_verificacion" type="text" class="form-control datetimepicker" value="{{old('fecha_hora_verificacion')}}">
                             </div>
                             <div class="form-group">
-                                <label for="numero_afectados" class="required">Numero afectados</label>
-                                <input type="number" name="numero_afectados" id="numero_afectados" class="form-control {{$errors->has('numero_afectados') ? 'is-invalid' : ''}}" placeholder="Ingrese el numero_afectados del evento" value="{{old('numero_afectados', '')}}">
-                                @if ($errors->has('numero_afectados'))
+                                <label for="zona_id" class="required">Zona</label>
+                                <select class="form-control select2" name="zona_id" style="width: 100%;">
+                                    <option value="">Seleccione un zona</option>
+                                    @foreach ($zonas as $zona)
+                                    <option value="{{ $zona->id }}" {{old('zona_id') == $zona->id ? 'selected' : ''}}>
+                                        {{ $zona->nombre }}
+                                    </option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('zona_id'))
                                 <span class="text-danger">
-                                    <strong>{{ $errors->first('numero_afectados') }}</strong>
+                                    <strong>{{ $errors->first('zona_id') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <label for="direccion" class="required">Direccion</label>
+                                <input type="text" name="direccion" id="direccion" class="form-control {{$errors->has('direccion') ? 'is-invalid' : ''}}" placeholder="Ingrese la direccion del evento" value="{{old('direccion', '')}}">
+                                @if ($errors->has('direccion'))
+                                <span class="text-danger">
+                                    <strong>{{ $errors->first('direccion') }}</strong>
                                 </span>
                                 @endif
                             </div>
@@ -93,38 +110,6 @@
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="zona_id" class="required">Zona</label>
-                                <select class="form-control select2" name="zona_id" style="width: 100%;">
-                                    <option value="">Seleccione un zona</option>
-                                    @foreach ($zonas as $zona)
-                                    <option value="{{ $zona->id }}" {{old('zona_id') == $zona->id ? 'selected' : ''}}>
-                                        {{ $zona->nombre }}
-                                    </option>
-                                    @endforeach
-                                </select>
-                                @if ($errors->has('zona_id'))
-                                <span class="text-danger">
-                                    <strong>{{ $errors->first('zona_id') }}</strong>
-                                </span>
-                                @endif
-                            </div>
-                            <div class="form-group">
-                                <label for="estadoEvento_id" class="required">Estado</label>
-                                <select class="form-control select2" name="estado_evento_id" style="width: 100%;">
-                                    <!-- <option value="">Seleccione un estado para el evento</option> -->
-                                    @foreach ($estadoEventos as $estadoEvento)
-                                    <option value="{{ $estadoEvento->id }}" {{old('estado_evento_id') == $estadoEvento->id ? 'selected' : 'selected'}}>
-                                        {{ $estadoEvento->nombre }}
-                                    </option>
-                                    @endforeach
-                                </select>
-                                @if ($errors->has('estado_evento_id'))
-                                <span class="text-danger">
-                                    <strong>{{ $errors->first('estado_evento_id') }}</strong>
-                                </span>
-                                @endif
-                            </div>
-                            <div class="form-group">
                                 <label for="estadoEvento_id" class="required">Entidad que atiende evento</label>
                                 <select class="form-control select2" name="entidad_id" style="width: 100%;">
                                     <option value="">Seleccione la entidad que atiende el evento</option>
@@ -140,20 +125,6 @@
                                 </span>
                                 @endif
                             </div>
-                            <!-- <div class="form-group">
-                                <label for="task_status">Status del proyecto</label>
-                                <select class="form-control {{ $errors->has('task_status') ? 'is-invalid' : '' }}" name="task_status" id="task_status" required>
-                                    <option value="">Seleccione un status</option>
-                                    @foreach(App\Models\Task::STATUS as $status)
-                                    <option value="{{ $status }}" {{ old('status') == $status ? 'selected' : '' }}>{{ $status }}</option>
-                                    @endforeach
-                                </select>
-                                @if($errors->has('status'))
-                                <div class="text-danger">
-                                    {{ $errors->first('status') }}
-                                </div>
-                                @endif
-                            </div> -->
                             <div class="row d-print-none mt-2">
                                 <div class="col-12 text-right">
                                     <a class="btn btn-danger" href="{{route('admin.eventos.index')}}">

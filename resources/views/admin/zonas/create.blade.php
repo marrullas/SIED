@@ -41,6 +41,22 @@
                                 <label for="contact_email" class="required">Rural </label>
                                 <input class="btn-check" type="checkbox" name="rural" id="rural">
                             </div>
+                            <div class="form-group">
+                                <label for="estrato_id" class="required">Estrato</label>
+                                <select class="form-control select2" name="estrato_id" style="width: 100%;">
+                                    <option value="">Seleccione estrato</option>
+                                    @foreach ($estratos as $estrato)
+                                    <option value="{{ $estrato->id }}" {{old('estrato_id') == $estrato->id ? 'selected' : ''}}>
+                                        {{ $estrato->nombre }}
+                                    </option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('estrato_id'))
+                                <span class="text-danger">
+                                    <strong>{{ $errors->first('estrato_id') }}</strong>
+                                </span>
+                                @endif
+                            </div>
                             <div class="row d-print-none mt-2">
                                 <div class="col-12 text-right">
                                     <a class="btn btn-danger" href="{{route('admin.zonas.index')}}">

@@ -28,6 +28,8 @@
 
                         <form method="POST" action="{{route('admin.atenciones.store')}}" enctype="multipart/form-data" >
                             @csrf
+                            <input type="hidden" name="familia_id" value="{{$familia->id}}">
+                            <input type="hidden" name="evento_id" value="{{$familia->evento_id}}">
 
                             <div class="form-group">
                                 <label for="tipo_ayuda_id">Tipo de ayuda</label>
@@ -43,8 +45,6 @@
                                 @endif
                             </div>
                             <div class="form-group">
-                                <input type="hidden" name="familia_id" value="{{$familia->id}}">
-                                <input type="hidden" name="evento_id" value="{{$familia->evento_id}}">
                                 <label for="cantidad" class="required">cantidad</label>
                                 <input type="number" name="cantidad" id="cantidad" class="form-control {{$errors->has('cantidad') ? 'is-invalid' : ''}}" placeholder="Ingrese cantidad" value="{{old('cantidad', '')}}">
                                 @if ($errors->has('cantidad'))
@@ -83,7 +83,10 @@
                                 </span>
                                 @endif
                             </div>
-
+                            <div class="form-group">
+                                <label for="entregadp" class="required">¿Entregado? </label>
+                                <input class="btn-check" type="checkbox" name="entregado" id="entregado">
+                            </div>
                             <div class="image">
                                 <label>
                                     <h4>Agregar imagen 1</h4>
