@@ -17,8 +17,8 @@ class TipoEventoSeeder extends Seeder
     {
         DB::table('tipo_eventos')->insert(
             [
-            'nombre' => 'Avenida Torrecial',
-            'descripcion' => 'Avenida Torrecial',
+            'nombre' => 'Avenida Torrencial',
+            'descripcion' => 'Avenida Torrencial',
             ]
         );
         DB::table('tipo_eventos')->insert(
@@ -65,7 +65,7 @@ class TipoEventoSeeder extends Seeder
         );
         DB::table('tipo_eventos')->insert(
             [
-                'nombre' => 'Incendio con materiales peligrosos',
+                'nombre' => 'Incidente con materiales peligrosos',
                 'descripcion' => 'Incendio con materiales peligrosos',
             ]
         );

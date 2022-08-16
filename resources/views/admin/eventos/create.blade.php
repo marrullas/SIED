@@ -39,7 +39,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="fecha_hora_reporte" class="required">Fecha Reporte</label>
+                                <label for="fecha_hora_reporte" class="required">Fecha y hora de Reporte</label>
                                 <input name="fecha_hora_reporte" type="text" class="form-control datetimepicker" value="{{old('fecha_hora_reporte')}}">
                             </div>
                             <div class="form-group">
@@ -65,7 +65,7 @@
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="fecha_hora_verificacion" class="required">Fecha verificación</label>
+                                <label for="fecha_hora_verificacion" class="required">Fecha y hora verificación</label>
                                 <input name="fecha_hora_verificacion" type="text" class="form-control datetimepicker" value="{{old('fecha_hora_verificacion')}}">
                                 @if($errors->has('fecha_hora_verificacion'))
                                 <span class="text-danger">

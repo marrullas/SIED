@@ -167,7 +167,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="telefono" class="required">Dirección</label>
-                                <input type="text" name="direccion" id="direccion" class="form-control {{$errors->has('direccion') ? 'is-invalid' : ''}}" placeholder="Ingrese el teléfono" value="{{old('direccion', '')}}">
+                                <input type="text" name="direccion" id="direccion" class="form-control {{$errors->has('direccion') ? 'is-invalid' : ''}}" placeholder="Ingrese el Dirección" value="{{old('direccion', '')}}">
                                 @if ($errors->has('direccion'))
                                 <span class="text-danger">
                                     <strong>{{ $errors->first('direccion') }}</strong>
@@ -176,7 +176,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="telefono" class="required">Email</label>
-                                <input type="text" name="email" id="email" class="form-control {{$errors->has('email') ? 'is-invalid' : ''}}" placeholder="Ingrese el teléfono" value="{{old('email', '')}}">
+                                <input type="text" name="email" id="email" class="form-control {{$errors->has('email') ? 'is-invalid' : ''}}" placeholder="Ingrese el email" value="{{old('email', '')}}">
                                 @if ($errors->has('email'))
                                 <span class="text-danger">
                                     <strong>{{ $errors->first('email') }}</strong>

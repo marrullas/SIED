@@ -21,7 +21,7 @@
                             @csrf
                             <div class="form-group">
                                 <label for="contact_name" class="required">Nombre del evento </label>
-                                <input type="text" name="nombre" id="nombre" class="form-control {{$errors->has('nombre') ? 'is-invalid' : ''}}" placeholder="Ingrese el nombre del genero" value="{{old('nombre', '')}}">
+                                <input type="text" name="nombre" id="nombre" class="form-control {{$errors->has('nombre') ? 'is-invalid' : ''}}" placeholder="Ingrese el nombre del tipo de evento" value="{{old('nombre', '')}}">
                                 @if ($errors->has('nombre'))
                                 <span class="text-danger">
                                     <strong>{{ $errors->first('nombre') }}</strong>
