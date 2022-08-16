@@ -10,7 +10,7 @@
                     <a href="{{ url('/home') }}" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                            Dashboard
+                            INICIO
                         </p>
                     </a>
                 </li>
@@ -22,97 +22,125 @@
                         </p>
                     </a>
                 </li>
-
-
-
                 <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Configuración
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-            <li class="nav-item">
-                    <a href="{{ route('admin.users.index') }}" class="nav-link">
+                    <a href="{{ route('admin.reportes.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
-                            Usuarios
+                            Reportes
+                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.reportes.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>
+                                    TAE
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.reportes.atencionesform') }}" class="nav-link">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>
+                                    Atenciones
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
-            <li class="nav-item">
-                    <a href="{{ route('admin.generos.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-clipboard-list"></i>
-                        <p>
-                            Generos
-                        </p>
-                    </a>
-                </li>
-
 
                 <li class="nav-item">
-                    <a href="{{ route('admin.zonas.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-clipboard-list"></i>
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                            Zonas
+                            Configuración
+                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.users.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>
+                                    Usuarios
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('admin.generos.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-clipboard-list"></i>
+                                <p>
+                                    Generos
+                                </p>
+                            </a>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a href="{{ route('admin.zonas.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-clipboard-list"></i>
+                                <p>
+                                    Zonas
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.etnias.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-clipboard-list"></i>
+                                <p>
+                                    Etnias
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.tipoEventos.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-clipboard-list"></i>
+                                <p>
+                                    Tipos Evento
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.tipoAyudas.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-clipboard-list"></i>
+                                <p>
+                                    Tipo de Ayudas
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.clients.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-user-tie"></i>
+                                <p>
+                                    Clientes
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.tasks.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-clipboard-list"></i>
+                                <p>
+                                    Tareas
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.projects.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-project-diagram"></i>
+                                <p>
+                                    Proyectos
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
+
                 <li class="nav-item">
-                    <a href="{{ route('admin.etnias.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-clipboard-list"></i>
-                        <p>
-                            Etnias
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('admin.tipoEventos.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-clipboard-list"></i>
-                        <p>
-                            Tipos Evento
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('admin.tipoAyudas.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-clipboard-list"></i>
-                        <p>
-                            Tipo de Ayudas
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('admin.clients.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-user-tie"></i>
-                        <p>
-                            Clientes
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('admin.tasks.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-clipboard-list"></i>
-                        <p>
-                            Tareas
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('admin.projects.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-project-diagram"></i>
-                        <p>
-                            Proyectos
-                        </p>
-                    </a>
-                </li>
-            </ul>
-          </li>
-          
-          <li class="nav-item">
                     <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
                         <p>
                             <i class="fas fa-fw fa-sign-out-alt nav-icon">

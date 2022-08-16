@@ -66,4 +66,14 @@ class Familia extends Model
     {
         return $this->belongsTo(Etnia::class);
     }
+
+    public function nombreCompleto()
+    {
+        return $this->nombre . ' ' . $this->apellido;
+    }
+
+    public function numeroMiembros()
+    {
+        return $this->parientes()->count()+1;
+    }
 }

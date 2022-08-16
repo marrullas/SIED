@@ -72,11 +72,18 @@
                                         <a href="{{ route('admin.eventos.addfotos',$evento) }}" class="btn btn-info" style="display: inline-block;">
                                             <i class='fa fa-images' style='color: white'></i>
                                         </a>
+                                        @if($evento->fecha_hora_verificacion != null)
                                         <a href="{{ route('admin.familias.index',$evento) }}" class="btn btn-warning" style="display: inline-block;">
                                         <i class='fa fa-address-card' style='color: white'></i>
                                         </a>
+                                        @endif
                                         <a href="{{ route('admin.eventos.cerrar',$evento->id) }}" class="btn btn-danger" style="display: inline-block;">
                                         <i class='fa fa-times-circle' style='color: white'></i>
+                                        </a>
+                                        @endif
+                                        @if($evento->estadoEvento->nombre == 'Cerrado' && $evento->fecha_hora_verificacion != null)
+                                        <a href="{{ route('admin.familias.index',$evento) }}" class="btn btn-warning" style="display: inline-block;">
+                                        <i class='fa fa-address-card' style='color: white'></i>
                                         </a>
                                         @endif
 

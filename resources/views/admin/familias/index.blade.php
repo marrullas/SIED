@@ -64,11 +64,11 @@
                                         <a href="{{ route('admin.familias.show',$familia->id) }}" class="btn btn-info" style="display: inline-block;">
                                         <i class='fa fa-info-circle' style='color: white'></i>
                                         </a>
-                                        <a href="{{ route('admin.atenciones.create',$familia->id) }}" class="btn btn-primary" style="display: inline-block;">
-                                        <i class='fa fa-heart' style='color: white'></i>
-                                        </a>
                                         <a href="{{ route('admin.parientes.create',$familia->id) }}" class="btn btn-warning" style="display: inline-block;">
                                         <i class='fa fa-address-card' style='color: white'></i>                                        
+                                        </a>
+                                        <a href="{{ route('admin.atenciones.create',$familia->id) }}" class="btn btn-primary" style="display: inline-block;">
+                                        <i class='fa fa-heart' style='color: white'></i>
                                         </a>
 
                                     </td>

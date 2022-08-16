@@ -13,6 +13,7 @@ use App\Http\Controllers\TipoAyudaController;
 use App\Http\Controllers\EventoController;
 use App\Http\Controllers\FamiliaController;
 use App\Http\Controllers\ParienteController;
+use App\Http\Controllers\ReporteController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -53,11 +54,19 @@ Route::group(['middleware' => ['auth', 'verified'], 'as' => 'admin.'], function 
     Route::resource('familias', FamiliaController::class);
     Route::resource('atenciones', AtencionController::class);
     Route::resource('parientes', ParienteController::class);
+    //Route::resource('reportes', ReporteController::class);
     
     //Route::get('/eventos/{id}/fotos', ['as' => 'eventos.addfotos' , 'uses' => 'EventoController@addfotos']);
 
+    Route::controller(ReporteController::class)->group(function () {
+        //Route::get('/reportes/tae', ['as' => 'reportes.index' , 'uses' => 'ReporteController@index']);
+        Route::get('/reportes/', 'index')->name('reportes.index');
+        Route::post('/reportes/tae', 'tae')->name('reportes.tae');
+        Route::get('/reportes/atenciones', 'atencionesform')->name('reportes.atencionesform');
+        Route::post('/reportes/atenciones', 'atenciones')->name('reportes.atenciones');
+        //Route::get('/reportes/eventosexport','exporteventos')->name('reportes.exportEventos'); 
+    });
     
-
     Route::controller(ParienteController::class)->group(function () {
         Route::get('/parientes/{familia}/create', 'create')->name('parientes.create');
     });
