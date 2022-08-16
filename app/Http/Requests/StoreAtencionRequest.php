@@ -29,7 +29,7 @@ class StoreAtencionRequest extends FormRequest
             'familia_id' => 'required|integer',
             'evento_id' => 'required|integer',
             'tipo_ayuda_id' => 'required|integer',
-            'fecha_hora_atencion' => 'nullable|date',
+            'fecha_hora_atencion' => 'nullable|date_format:d/m/Y H:i',
             'responsable_atencion' => 'nullable|string|max:255',
             'entregado' => 'required|boolean',
             'foto1' => 'nullable',

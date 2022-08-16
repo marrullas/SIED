@@ -67,6 +67,7 @@ class AtencionController extends Controller
         $saveAtencion->foto1 = $filename;
         $saveAtencion->foto2 = $filename2;
         $saveAtencion->save();
+        //return redirect()->back();
         return redirect()->route('admin.familias.index', $familia->evento_id)->with('success', 'Atencion creada con éxito');
     }
 
@@ -108,7 +109,8 @@ class AtencionController extends Controller
     {
         //dd($request);
         $atencion->update($request->validated());
-        return redirect()->route('admin.familias.index', $atencion->familia->evento_id)->with('success', 'Atencion actualizada con éxito');
+        //return redirect()->route('admin.familias.index', $atencion->familia->evento_id)->with('success', 'Atencion actualizada con éxito');
+        return redirect()->back();
     }
 
     /**

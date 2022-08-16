@@ -12,9 +12,9 @@
 </div>
 <div class="content">
     <div class="container-fluid">
-    @if ($errors->any())
+        @if ($errors->any())
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        {!! implode('', $errors->all('<div>:message</div>')) !!}
+            {!! implode('', $errors->all('<div>:message</div>')) !!}
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -67,6 +67,11 @@
                             <div class="form-group">
                                 <label for="fecha_hora_verificacion" class="required">Fecha verificación</label>
                                 <input name="fecha_hora_verificacion" type="text" class="form-control datetimepicker" value="{{old('fecha_hora_verificacion')}}">
+                                @if($errors->has('fecha_hora_verificacion'))
+                                <span class="text-danger">
+                                    <strong>{{ $errors->first('fecha_hora_verificacion') }}</strong>
+                                </span>
+                                @endif
                             </div>
                             <div class="form-group">
                                 <label for="zona_id" class="required">Zona</label>
@@ -125,6 +130,16 @@
                                 </span>
                                 @endif
                             </div>
+                            <div class="form-group">
+                                <label for="entidad_nombre" class="required">Nombre de la entidad</label>
+                                <input type="text" name="entidad_nombre" id="entidad_nombre" class="form-control {{$errors->has('entidad_nombre') ? 'is-invalid' : ''}}" placeholder="Ingrese el nombre de la entidad" value="{{old('entidad_nombre', '')}}">
+                                @if ($errors->has('entidad_nombre'))
+                                <span class="text-danger">
+                                    <strong>{{ $errors->first('entidad_nombre') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+
                             <div class="row d-print-none mt-2">
                                 <div class="col-12 text-right">
                                     <a class="btn btn-danger" href="{{route('admin.eventos.index')}}">

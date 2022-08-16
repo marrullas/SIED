@@ -30,7 +30,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="contact_email" class="required">Descripcion </label>
-                                <input type="test" name="descripcion" id="nombre" class="form-control {{$errors->has('descripcion') ? 'is-invalid' : ''}}" placeholder="Ingrese la decripcion del genero" value="{{old('descripcion', '')}}">
+                                <input type="test" name="descripcion" id="nombre" class="form-control {{$errors->has('descripcion') ? 'is-invalid' : ''}}" placeholder="Ingrese la decripcion de la zona" value="{{old('descripcion', '')}}">
                                 @if ($errors->has('descripcion'))
                                 <span class="text-danger">
                                     <strong>{{ $errors->first('nombre') }}</strong>

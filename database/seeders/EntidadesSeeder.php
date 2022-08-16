@@ -49,6 +49,14 @@ class EntidadesSeeder extends Seeder
             'telefono' => '87654321',
             ]
         );
+        DB::table('entidades')->insert(
+            [
+                'nombre' => 'Otra',
+                'descripcion' => 'Entidad distinta a las anteriores',
+            'direccion' => 'Calle 4',
+            'telefono' => '87654321',
+            ]
+        );
         
     }
 }

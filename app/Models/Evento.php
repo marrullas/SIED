@@ -44,6 +44,7 @@ class Evento extends Model
         'atendido',
         'fecha_hora_cierre',
         'descripcion_cierre',
+        'entidad_nombre'
     ];
 
     public function eventoFotos()

@@ -84,7 +84,7 @@
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="entregadp" class="required">¿Entregado? </label>
+                                <label for="entregadp" class="required"><h4> ¿Entregado? </h4></label>
                                 <input class="btn-check" type="checkbox" name="entregado" id="entregado">
                             </div>
                             <div class="image">
@@ -101,7 +101,7 @@
                             </div>
                             <div class="row d-print-none mt-2">
                                 <div class="col-12 text-right">
-                                    <a class="btn btn-danger" href="{{route('admin.atenciones.index')}}">
+                                    <a class="btn btn-danger" href="{{ url()->previous() }}">
                                         <i class="fa fa-fw fa-lg fa-arrow-left"></i>
                                         Regresar
                                     </a>

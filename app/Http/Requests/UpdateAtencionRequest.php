@@ -29,7 +29,7 @@ class UpdateAtencionRequest extends FormRequest
             'familia_id' => 'required|integer',
             'evento_id' => 'required|integer',
             'tipo_ayuda_id' => 'required|integer',
-            'fecha_hora_atencion' => 'required|date',
+            'fecha_hora_atencion' => 'required|date_format:d/m/Y H:i',
             'entregado' => 'nullable|boolean',
             'responsable_atencion' => 'nullable|string|max:255',
             'foto1' => 'nullable|string|max:255',

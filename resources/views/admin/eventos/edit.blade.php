@@ -68,6 +68,12 @@
                             <div class="form-group">
                                 <label for="fecha_hora_verificacion" class="required">Fecha verificación</label>
                                 <input name="fecha_hora_verificacion" type="text" class="form-control datetimepicker" value="{{old('fecha_hora_verificacion', $evento->fecha_hora_verificacion)}}">
+                            
+                            @if($errors->has('fecha_hora_verificacion'))
+                            <span class="text-danger">
+                                <strong>{{ $errors->first('fecha_hora_verificacion') }}</strong>
+                            </span>
+                            @endif
                             </div>
                             <div class="form-group">
                                 <label for="zona_id" class="required">Zona</label>
@@ -145,6 +151,15 @@
                                 @endif
                             </div>
                             
+                            <div class="form-group">
+                                <label for="entidad_nombre" class="required">Nombre de la entidad</label>
+                                <input type="text" name="entidad_nombre" id="entidad_nombre" class="form-control {{$errors->has('entidad_nombre') ? 'is-invalid' : ''}}" placeholder="Ingrese el nombre de la entidad" value="{{old('entidad_nombre', $evento->entidad_nombre)}}">
+                                @if ($errors->has('entidad_nombre'))
+                                <span class="text-danger">
+                                    <strong>{{ $errors->first('entidad_nombre') }}</strong>
+                                </span>
+                                @endif
+                            </div>
                             
 
                             <div class="row d-print-none mt-2">

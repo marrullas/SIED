@@ -25,7 +25,7 @@
                                     <td><p>{{$evento->descripcion}}</p></td>
                                     <td>{{$evento->fecha_hora_reporte}}</td>
                                     <td>{{$evento->fecha_hora_evento}}</td>
-                                    <td>{{$evento->fecha_verificacion}}</td>
+                                    <td>{{$evento->fecha_hora_verificacion}}</td>
                                     <td>{{$evento->zona->nombre}}</td>
                                     <td>{{$evento->direccion}}</td>
                                     <td>{{$evento->tipoEvento->nombre}}</td>

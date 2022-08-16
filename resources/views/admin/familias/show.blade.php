@@ -50,7 +50,7 @@
                             <dd class="col-sm-9">
                                 <dl class="row">
                                     <dt class="col-sm-4">Numero de miembros</dt>
-                                    <dd class="col-sm-8">{{$familia->numero_miembros}}</dd>
+                                    <dd class="col-sm-8">{{$familia->parientes->count()+1}}</dd>
                                 </dl>
 
                             <dt class="col-sm-3">Observaciones: </dt>
@@ -107,9 +107,9 @@
                                             <button type="submit" class="btn btn-danger" value="Eliminar"> <i class='fas fa-trash' style='color: white' value="Eliminar"></i></button>
                                         </form>
                                         
-                                        <a href="{{ route('admin.parientes.show',$pariente->id) }}" class="btn btn-info" style="display: inline-block;">
+                                        <!-- <a href="{{ route('admin.parientes.show',$pariente->id) }}" class="btn btn-info" style="display: inline-block;">
                                         <i class='fa fa-info-circle' style='color: white'></i>
-                                        </a>
+                                        </a> -->
 
                                     </td>
                                 </tr>
@@ -126,16 +126,15 @@
                 <div class="card">
                     <div class="card-body">
 
-                        
-
+                        <a <a href="{{ route('admin.atenciones.create',$familia->id) }} " class="btn btn-primary mb-3">Nueva atención</a>
                         <table class="table table-bordered" id="tasks_table">
                             <thead>
                                 <tr>
                                     <th>#</th>
                                     <th>Tipo ayuda</th>
-                                    <th>Cantidad </th>
-                                    
+                                    <th>Cantidad </th>                                    
                                     <th>Fecha</th>
+                                    <th>¿Entregado?</th>
                                     <th>Responsable</th>
 
                                     <th>Acciones</th>
@@ -148,12 +147,13 @@
                                     <td>{{$atencion->tipoAyuda->nombre}}</td>
                                     <td>{{$atencion->cantidad}}</td>                                   
                                     <td>{{$atencion->fecha_hora_atencion}}</td>
+                                    <td>{{($atencion->entregado == 1 ? 'Si' : 'No')}}</td>
                                     <td>{{$atencion->responsable_atencion}}</td>
 
                                     <td>
-                                        <a href="{{ route('admin.atenciones.show',$atencion->id) }}" class="btn btn-info" style="display: inline-block;">
+                                        <!-- <a href="{{ route('admin.atenciones.show',$atencion->id) }}" class="btn btn-info" style="display: inline-block;">
                                         <i class='fa fa-info-circle' style='color: white'></i>
-                                        </a>
+                                        </a> -->
                                         <a href="{{ route('admin.atenciones.edit', $atencion->id) }}" class="btn btn-success">
                                             <i class='fa fa-edit' style='color: white'></i>
                                         </a>

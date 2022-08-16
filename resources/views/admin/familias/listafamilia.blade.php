@@ -43,7 +43,7 @@
 
                                     <td>{{$familia->nombre}} {{$familia->apellido}}</td>
                                     <td>{{$familia->documento}}</td>
-                                    <td>{{$familia->numero_miembros}}</td>
+                                    <td>{{$familia->parientes->count()+1}}</td>
                                     <td>{{$familia->atenciones->count()}}</td>
                                     
                                     <td>
