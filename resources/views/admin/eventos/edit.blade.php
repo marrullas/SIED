@@ -29,7 +29,7 @@
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="fecha_hora_reporte" class="required">Fecha Reporte</label>
+                                <label for="fecha_hora_reporte" class="required">Fecha Reporte y hora del reporte</label>
                                 <input name="fecha_hora_reporte" type="text" class="form-control datetimepicker" value="{{old('fecha_hora_reporte', $evento->fecha_hora_reporte)}}">
                             </div>
                             <!-- fomurlario de edición -->

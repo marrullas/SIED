@@ -87,6 +87,16 @@ class EtniaController extends Controller
      */
     public function destroy(Etnia $etnia)
     {
-        //
+
+        if($etnia->familias->count() > 0) {
+            return redirect()->route('admin.etnias.index')->with('error', 'No se puede eliminar la etnia porque tiene familias asociadas');
+        }
+        if($etnia->parientes->count()>0){
+            return redirect()->route('admin.etnias.index')->with('error', 'No se puede eliminar la etnia porque tiene parientes asociados');
+        }
+
+        $etnia->delete();
+
+        return redirect()->route('admin.etnias.index')->with('success', 'Etnia eliminada exitosamente');
     }
 }

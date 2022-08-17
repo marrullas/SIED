@@ -14,4 +14,11 @@ class TipoAyuda extends Model
         'nombre',
         'descripcion',
     ];
+
+    protected $table = 'tipo_ayudas';
+
+    public function atenciones()
+    {
+        return $this->hasMany(Atencion::class);
+    }
 }

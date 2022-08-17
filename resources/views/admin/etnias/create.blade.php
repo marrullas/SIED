@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Nueva Zona</h1>
+                <h1 class="m-0">Nueva Etnia</h1>
             </div>
         </div>
     </div>
@@ -17,10 +17,10 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <form method="POST" action="{{route('admin.zonas.store')}}">
+                        <form method="POST" action="{{route('admin.etnias.store')}}">
                             @csrf
                             <div class="form-group">
-                                <label for="contact_name" class="required">Nombre del zona </label>
+                                <label for="contact_name" class="required">Nombre del etnia </label>
                                 <input type="text" name="nombre" id="nombre" class="form-control {{$errors->has('nombre') ? 'is-invalid' : ''}}" placeholder="Ingrese el nombre del genero" value="{{old('nombre', '')}}">
                                 @if ($errors->has('nombre'))
                                 <span class="text-danger">

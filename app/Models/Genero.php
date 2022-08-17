@@ -14,4 +14,9 @@ class Genero extends Model
         'nombre',
         'descripcion'
     ];
+
+    public function Familias()
+    {
+        return $this->hasMany(Familia::class);
+    }
 }

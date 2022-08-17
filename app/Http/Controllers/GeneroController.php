@@ -89,6 +89,11 @@ class GeneroController extends Controller
      */
     public function destroy(Genero $genero)
     {
+
+        if($genero->Familias()->count() > 0){
+            return redirect()->route('admin.generos.index')->with('error', 'No se puede eliminar el genero porque tiene familias asociadas');
+        }
+
         $genero->delete();
 
         return back();

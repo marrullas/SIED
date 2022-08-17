@@ -21,4 +21,9 @@ class Zona extends Model
     {
         return $this->belongsTo(Estrato::class);
     }
+
+    public function Eventos()
+    {
+        return $this->hasMany(Evento::class);
+    }
 }

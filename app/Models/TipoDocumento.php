@@ -14,4 +14,9 @@ class TipoDocumento extends Model
         'nombre',
         'descripcion',
     ];
+
+    public function familias()
+    {
+        return $this->hasMany(Familia::class);
+    }
 }

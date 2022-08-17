@@ -87,6 +87,10 @@ class TipoEventoController extends Controller
      */
     public function destroy(TipoEvento $tipoEvento)
     {
+
+        if($tipoEvento->eventos()->count() > 0) {
+            return redirect()->route('admin.tipoEventos.index')->with('error', 'No se puede eliminar el tipo de evento porque tiene eventos asociados');
+        }
         $tipoEvento->delete();
 
         return redirect()->route('admin.tipoEventos.index')->with('success', 'Tipo de Evento eliminado exitosamente');

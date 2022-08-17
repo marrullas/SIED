@@ -87,6 +87,10 @@ class TipoAyudaController extends Controller
      */
     public function destroy(TipoAyuda $tipoAyuda)
     {
+
+        if($tipoAyuda->atenciones()->count() > 0){
+            return redirect()->route('admin.tipoAyudas.index')->with('error', 'No se puede eliminar el tipo de ayuda porque tiene atenciones asociadas');
+        }
         $tipoAyuda->delete();
 
         return redirect()->route('admin.tipoAyudas.index')->with('success', 'Tipo de Ayuda eliminado exitosamente');

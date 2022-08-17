@@ -106,6 +106,10 @@ class ZonaController extends Controller
 
         //echo ($zona);
 
+        if($zona->Eventos()->count() > 0){
+            return redirect()->route('admin.zonas.index')->with('error', 'Zona no puede ser eliminada');
+        }
+
         if($zona->delete()) {
             return redirect()->route('admin.zonas.index')->with('success', 'El registro fue elimando correctamente!');
           } else {

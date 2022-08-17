@@ -15,4 +15,14 @@ class TipoPoblacion extends Model
         'nombre',
         'descripcion',
     ];
+
+    public function famimilas()
+    {
+        return $this->hasMany(Familia::class);
+    }
+
+    public function parientes()
+    {
+        return $this->hasMany(Pariente::class);
+    }
 }

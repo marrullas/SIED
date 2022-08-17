@@ -124,9 +124,17 @@ class EventoController extends Controller
      */
     public function destroy(Evento $evento)
     {
-        //
-        $evento->delete();
-        return redirect()->back();
+        
+
+        if($evento->familia->count()){
+            return redirect()->route('admin.eventos.index')->with('error', 'No se puede eliminar el evento porque tiene familias asociadas');
+        }
+        else{
+            $evento->delete();
+            return redirect()->route('admin.eventos.index')->with('success', 'Evento eliminado exitosamente');
+        }
+        //$evento->delete();
+        //return redirect()->back();
     }
 
     public function addFotos(Evento $evento)
