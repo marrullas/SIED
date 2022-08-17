@@ -35,7 +35,7 @@
 
                                     <th>#</th>
                                     <th>Descripcion</th>
-                                    <th>Fecha </th>
+                                    <th>Fecha hora reporte</th>
                                     <th>Status</th>
                                     <th>Tipo</th>
                                     <th>Zona</th>

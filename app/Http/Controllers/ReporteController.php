@@ -40,10 +40,10 @@ class ReporteController extends Controller
             ->get();
 
         
-         //$excel = Excel::download(new EventosExport($eventos,$eventostae), 'TAE-Eventos.xlsx');
-         //return $excel;
+         $excel = Excel::download(new EventosExport($eventos,$eventostae), 'TAE-Eventos.xlsx');
+         return $excel;
 
-        return view('admin.reportes.tae', compact('eventos','eventostae'));
+        //return view('admin.reportes.tae', compact('eventos','eventostae'));
 
     }
 
