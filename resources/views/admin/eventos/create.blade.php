@@ -131,7 +131,7 @@
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="entidad_nombre" class="required">Nombre de la entidad</label>
+                                <label for="entidad_nombre" class="required">Nombre de la entidad (En caso de ser otra)</label>
                                 <input type="text" name="entidad_nombre" id="entidad_nombre" class="form-control {{$errors->has('entidad_nombre') ? 'is-invalid' : ''}}" placeholder="Ingrese el nombre de la entidad" value="{{old('entidad_nombre', '')}}">
                                 @if ($errors->has('entidad_nombre'))
                                 <span class="text-danger">

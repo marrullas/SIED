@@ -109,8 +109,8 @@ class AtencionController extends Controller
     {
         //dd($request);
         $atencion->update($request->validated());
-        //return redirect()->route('admin.familias.index', $atencion->familia->evento_id)->with('success', 'Atencion actualizada con éxito');
-        return redirect()->back();
+        return redirect()->route('admin.familias.show', $atencion->familia->id)->with('success', 'Atencion actualizada con éxito');
+        //return redirect()->back();
     }
 
     /**

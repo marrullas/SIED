@@ -42,7 +42,7 @@
 
                             <div class="form-group">
                                 <label for="cantidad" class="required">Cantidad</label>
-                                <input type="number" class="form-control{{ $errors->has('cantidad') ? ' is-invalid' : '' }}" id="cantidad" name="cantidad" value="{{ old('cantidad', $atencion->cantidad) }}" required>
+                                <input type="number" class="form-control{{ $errors->has('cantidad') ? ' is-invalid' : '' }}" id="cantidad" name="cantidad" value="{{ old('cantidad', $atencion->cantidad) }}">
                                 @if ($errors->has('cantidad'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('cantidad') }}</strong>
@@ -64,7 +64,7 @@
 
                             <div class="form-group">
                                 <label for="fecha_hora_atencion" class="required">Fecha y hora de atención</label>
-                                <input type="text" class="form-control datetimepicker {{ $errors->has('fecha_hora_atencion') ? ' is-invalid' : '' }}" id="fecha_hora_atencion" name="fecha_hora_atencion" value="{{ old('fecha_hora_atencion', $atencion->fecha_hora_atencion) }}" required>
+                                <input type="text" class="form-control datetimepicker {{ $errors->has('fecha_hora_atencion') ? ' is-invalid' : '' }}" id="fecha_hora_atencion" name="fecha_hora_atencion" value="{{ old('fecha_hora_atencion', $atencion->fecha_hora_atencion) }}" >
                                 
                                 @if ($errors->has('fecha_hora_atencion'))
                                     <span class="invalid-feedback" role="alert">
@@ -76,7 +76,7 @@
 
                             <div class="form-group">
                                 <label for="responsable_atencion" class="required">Responsable de atención</label>
-                                <input type="text" class="form-control{{ $errors->has('responsable_atencion') ? ' is-invalid' : '' }}" id="responsable_atencion" name="responsable_atencion" value="{{ old('responsable_atencion', $atencion->responsable_atencion) }}" required>
+                                <input type="text" class="form-control{{ $errors->has('responsable_atencion') ? ' is-invalid' : '' }}" id="responsable_atencion" name="responsable_atencion" value="{{ old('responsable_atencion', $atencion->responsable_atencion) }}" >
                                 @if ($errors->has('responsable_atencion'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('responsable_atencion') }}</strong>
@@ -103,7 +103,7 @@
                             </div>
                             <div class="row d-print-none mt-2">
                                 <div class="col-12 text-right">
-                                    <a class="btn btn-danger" href="{{route('admin.atenciones.index')}}">
+                                    <a class="btn btn-danger" href="{{url()->previous()}}">
                                         <i class="fa fa-fw fa-lg fa-arrow-left"></i>
                                         Regresar
                                     </a>

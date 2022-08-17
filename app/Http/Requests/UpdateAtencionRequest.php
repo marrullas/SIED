@@ -24,16 +24,16 @@ class UpdateAtencionRequest extends FormRequest
     public function rules()
     {
         return [
-            'cantidad' => 'required|integer',
+            'cantidad' => 'nullable|integer',
             'descripcion' => 'nullable|string|max:255',
             'familia_id' => 'required|integer',
             'evento_id' => 'required|integer',
             'tipo_ayuda_id' => 'required|integer',
-            'fecha_hora_atencion' => 'required|date_format:d/m/Y H:i',
-            'entregado' => 'nullable|boolean',
+            'fecha_hora_atencion' => 'nullable|date_format:d/m/Y H:i',
             'responsable_atencion' => 'nullable|string|max:255',
-            'foto1' => 'nullable|string|max:255',
-            'foto2' => 'nullable|string|max:255',
+            'entregado' => 'required|boolean',
+            'foto1' => 'nullable',
+            'foto2' => 'nullable',
         ];
     }
 
